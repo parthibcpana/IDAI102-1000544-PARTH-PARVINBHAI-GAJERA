@@ -12,69 +12,34 @@
 
 </div>
 
-> **IDAI 102: Python Programming — Formative Assessment 2 (FA-2)**  
-> **Course Subject (CRS)**: Artificial Intelligence: Real-World Applications & Implications  
-> **Student Developer**: Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
-> **Project Partner**: Subhan Syed  
-> **School / Institutional Partner**: Aspee Nutan Academy / WACP International  
-> **Client Organization**: WellNest Technologies Pvt. Ltd. | Python Development Team  
-> **Foundational Planning Atlas**: [Canva Visual Atlas ID: DAHaBqm9cZI](https://www.canva.com/design/DAHars3Lfk4/1NikvoNTGVTVM2JzmDzuBQ/edit)  
-> **Live Interactive Application**: [https://waterbuddy-parth-gajera.streamlit.app/](https://waterbuddy-parth-gajera.streamlit.app/)  
-> **GitHub Repository URL**: [https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA](https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA)
-
----
-
-## Executive Summary
-
-**WaterBuddy** is an intelligent, privacy-preserving, clinical-grade hydration monitoring system built upon the core tenets of **Calm Technology** and evidence-based behavioral psychology. Developed as the production deployment milestone (FA-2) stemming from the comprehensive architectural visual atlas established in FA-1, WaterBuddy solves the widespread modern issue of chronic involuntary dehydration.
-
-By synthesizing clinical intake baselines from the **World Health Organization (WHO)**, the **European Food Safety Authority (EFSA)**, and the **National Academy of Medicine (NAM)** across four distinct demographic cohorts, WaterBuddy delivers tailored hydration prescriptions. The application couples this rigorous clinical foundation with an engaging, low-cognitive-load user experience: a continuous **60 FPS animated SVG fluid water bottle**, a **5-character companion spirit mascot system** with responsive emotional states, an innovative **in-memory headless turtle vector graphics engine**, and a **living milestone wall of badges** that transforms habit formation from a chore into a rewarding daily ritual.
-
-```mermaid
-flowchart TD
-    subgraph UI_Inputs ["💧 User Intake & Profiling Layer"]
-        A1["Demographic Age Cohort Selection<br>(Children • Teens • Adults • Seniors)"]
-        A2["Tactile Vessel Container Chips<br>(Mug 250ml • Glass 250ml • Tumbler 350ml • Bottle 500ml • Flask 750ml)"]
-        A3["Custom Volume Stepper (10ml–2000ml)"]
-        A4["Bi-Directional Cup Converter (1 Cup = 250ml)"]
-        A5["Companion Spirit Mascot Selection (5 Avatars)"]
-    end
-
-    subgraph Core_Engine ["⚡ Core Python Logic Engine (app.py)"]
-        B1["Clinical Baseline Model<br>(WHO / EFSA / NAM Demographic Standards)"]
-        B2["Mathematical State Engine<br>(Intake Summation, Deficit, % Calculation)"]
-        B3["Session State Ledger (Volatile Local Memory)"]
-        B4["Gamification & Living Badge Evaluator"]
-        B5["Headless Turtle Procedural Vector Generator"]
-    end
-
-    subgraph Reactive_Outputs ["📊 Reactive Outputs & Feedback Layer"]
-        C1["60 FPS Animated SVG Water Bottle<br>(Sine-Wave Liquid & Rising Micro-Bubbles)"]
-        C2["5-Avatar Companion Mascot<br>(5 Animated Emotional SVG Tiers)"]
-        C3["Living Wall of Badges<br>(Grayscale Monochrome ➔ Radiant Color)"]
-        C4["Procedural Vector Rewards<br>(Water Drop • Sprout Leaf • 32-pt Rosette)"]
-        C5["Chronological Ledger Table<br>(Undo Last Drink • RFC 4180 CSV Export)"]
-    end
-
-    UI_Inputs --> Core_Engine
-    Core_Engine --> Reactive_Outputs
-```
+> **Course:** Artificial Intelligence: Real-World Applications & Implications  
+> **Course Code:** `IDAI 102` (Python Programming)  
+> **Assignment Title:** Design 'WaterBuddy': Your Daily Hydration Companion  
+> **Type of Assessment:** Formative Assessment 2 (FA-2: Developing and Deploying App Using Python)  
+> **Scenario Track:** WellNest Technologies Pvt. Ltd. — Clinical Hydration System  
+> **Student Developer:** Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
+> **Project Partner:** Subhan Syed  
+> **School / Institutional Partner:** Aspee Nutan Academy / WACP International  
+> **Client Organization:** WellNest Technologies Pvt. Ltd. | Python Development Team  
+> **Foundational Planning Atlas:** [Canva Visual Atlas ID: DAHars3Lfk4](https://www.canva.com/design/DAHars3Lfk4/1NikvoNTGVTVM2JzmDzuBQ/edit)  
+> **Live Interactive Application:** [https://waterbuddy-parth-gajera.streamlit.app/](https://waterbuddy-parth-gajera.streamlit.app/)  
+> **GitHub Repository URL:** [https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA](https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA)
 
 ---
 
 ## Table of Contents
 
-1. [Collaborative Project Architecture & Evolution](#1-collaborative-project-architecture--evolution)
-2. [Design Thinking 5-Stage Methodology](#2-design-thinking-5-stage-methodology)
-3. [Research & Clinical Hydration Baselines](#3-research--clinical-hydration-baselines)
-4. [Live Visual Interface & Screenshot Gallery](#4-live-visual-interface--screenshot-gallery)
-5. [Visual Storyboard & 5-Screen System Architecture](#5-visual-storyboard--5-screen-system-architecture)
-6. [System Architecture & Mathematical State Machine](#6-system-architecture--mathematical-state-machine)
+1. [Project Purpose & Student Learning Journey](#1-project-purpose--student-learning-journey)
+2. [Intended Learning Outcomes: Knowledge Acquired & Practical Evidence](#2-intended-learning-outcomes-knowledge-acquired--practical-evidence)
+3. [Collaborative Project Architecture & Evolution](#3-collaborative-project-architecture--evolution)
+4. [Problem Understanding & Clinical Hydration Baselines (WHO / EFSA / NAM)](#4-problem-understanding--clinical-hydration-baselines-who--efsa--nam)
+5. [System Architecture & Core Algorithmic State Machine](#5-system-architecture--core-algorithmic-state-machine)
+6. [Interface Design, Wireframes & Screenshot Gallery](#6-interface-design-wireframes--screenshot-gallery)
 7. [Dual Visual Feedback & 60 FPS Animated SVG Water Bottle Engine](#7-dual-visual-feedback--60-fps-animated-svg-water-bottle-engine)
-8. [5-Avatar Companion Spirit System](#8-5-avatar-companion-spirit-system)
+8. [5-Avatar Companion Spirit Mascot System (25 Vector Variations)](#8-5-avatar-companion-spirit-mascot-system-25-vector-variations)
 9. [Procedural In-Memory Headless Turtle Vector Graphics Engine](#9-procedural-in-memory-headless-turtle-vector-graphics-engine)
 10. [Living Wall of Badges & Habit Gamification](#10-living-wall-of-badges--habit-gamification)
-11. [Tactile Logging, History Ledger & Data Sovereignty](#11-tactile-logging-history-ledger--data-sovereignty)
+11. [Tactile Logging, Bi-Directional Cup Converter & History Ledger](#11-tactile-logging-bi-directional-cup-converter--history-ledger)
 12. [Verification & Scenario Stress-Testing Matrix](#12-verification--scenario-stress-testing-matrix)
 13. [Deployment & Local Installation Guide](#13-deployment--local-installation-guide)
 14. [System Standards & Architecture Specifications](#14-system-standards--architecture-specifications)
@@ -82,9 +47,63 @@ flowchart TD
 
 ---
 
-## 1. Collaborative Project Architecture & Evolution
+## 1. Project Purpose & Student Learning Journey
 
-In alignment with the formative peer-development framework of **IDAI 102 (Formative Assessment 2)**, this software release represents the deliberate evolution from a foundational text starter script into an enterprise-grade, gamified clinical application:
+### 1.1 Academic Rationale & What We Aimed to Learn
+The primary objective of this Formative Assessment (FA-2) was to transition from foundational conceptual architecture (FA-1 visual atlas) into a fully functional, clinical-grade software application using Python and Streamlit. This milestone tested our ability to synthesize clinical nutritional science with modern reactive web engineering:
+
+1. **Translating Storyboards into Production Code:** Transforming the 5-screen Canva Visual Atlas (`DAHaBqm9cZI`) designed in FA-1 into responsive, interactive Streamlit components without architectural drift.
+2. **Implementing Clinical Hydration Models:** Operationalizing demographic intake baselines from the World Health Organization (WHO) and European Food Safety Authority (EFSA) to replace generic "8 glasses a day" simplifications.
+3. **Engineering Cloud-Safe Vector Kinematics:** Resolving the critical headless server display crash (`TclError: no display name`) by developing an in-memory trigonometric vector turtle engine on Pillow.
+4. **Architecting Ambient Visual Feedback:** Applying the principles of **Calm Technology** to replace intrusive push notifications with ambient fluid wave animations, micro-bubbles, and responsive mascot emotions.
+5. **Collaborative Software Engineering:** Practicing peer engineering division of labor—evolving a foundational text starter script into an enterprise-grade cloud release.
+
+### 1.2 Application Purpose & Realized Objectives (WellNest Technologies Pvt. Ltd.)
+In accordance with the project brief for **WaterBuddy**, the explicit purpose of the application is to serve as an intelligent, privacy-preserving hydration companion that helps users build consistent, healthy daily fluid habits:
+
+```mermaid
+flowchart TD
+    subgraph Core_Mission ["💧 WaterBuddy Core Functional Mission"]
+        M1["Personalized Demographics: Dynamically prescribe targets across 4 cohorts (1,200ml to 2,000ml)"]
+        M2["Ergonomic Logging: Provide 5 tactile physical container chips (250ml to 750ml) for sub-second logging"]
+        M3["Bi-Directional Unit Conversion: Convert between imperial cups and metric ml with 1-click ledger logging"]
+        M4["Synchronized Visual Feedback: 60 FPS animated SVG fluid wave bottle + 5 expressive companion spirits"]
+        M5["Milestone Recognition: Dynamic Living Wall of Badges unlocking from grayscale to glowing color"]
+        M6["Data Sovereignty: Volatile local memory tracking with 1-click Undo rollback and RFC 4180 CSV export"]
+    end
+```
+
+---
+
+## 2. Intended Learning Outcomes: Knowledge Acquired & Practical Evidence
+
+The project provides concrete, auditable implementation evidence for all five Intended Learning Outcomes (ILOs) assessed under the Formative Assessment 2 framework:
+
+### ILO 1: Modular Python Applications
+* **Knowledge Acquired:** Mastered the structure of production-grade Python web architectures, separating clinical calculation engines, SVG generators, and vector graphics routines from presentation layouts.
+* **Practical Evidence:** Built a clean, single-file production architecture (`app.py`, 984 lines) with discrete, single-responsibility functions (`calculate_hydration_progress()`, `render_animated_bottle_svg()`, `render_avatar_svg()`, `draw_vector_art()`, `evaluate_badges()`).
+
+### ILO 2: Real-Time Data Processing
+* **Knowledge Acquired:** Deepened understanding of stateful reactive execution in Streamlit, managing dynamic updates to running totals, remaining volume deficits, percentage gauges, and chronological audit feeds.
+* **Practical Evidence:** All calculations execute in sub-millisecond local compute time within `st.session_state`: updating intake metrics, re-evaluating badge thresholds, and adjusting fluid fill heights instantaneously.
+
+### ILO 3: Interactive Streamlit Web Interface
+* **Knowledge Acquired:** Mastered Streamlit's rich widget ecosystem, custom CSS injection, dual-palette accessibility design, and session gating.
+* **Practical Evidence:** Implemented Screen 1 Onboarding Gateway, Sidebar Profile Card with circular avatar, dual-palette theme toggle (Obsidian Ocean Dark Mode default vs Crisp Aqua Light Mode), 5 tactile vessel chips, and numeric steppers.
+
+### ILO 4: Creative Visual Elements
+* **Knowledge Acquired:** Learned to integrate advanced graphics into web apps without external runtime dependencies—combining pure CSS keyframe SVG animations with procedural in-memory vector art.
+* **Practical Evidence:** Developed the 60 FPS animated SVG fluid water bottle with pure CSS `@keyframes wave-flow`, 5 mascot avatars with 5 emotional tiers (25 vector variations), and an in-memory Pillow `HeadlessTurtle` rendering Water Drops, Sprout Leaves, and 32-point Rosettes.
+
+### ILO 5: Public Cloud Deployment
+* **Knowledge Acquired:** Mastered cloud-native deployment pipelines, dependency pinning, and public repository management on GitHub and Streamlit Community Cloud.
+* **Practical Evidence:** Deployed to Streamlit Community Cloud with public HTTPS availability: [Live App URL](https://waterbuddy-parth-gajera.streamlit.app/). Verified minimal dependencies in `requirements.txt` with zero deprecated parameters.
+
+---
+
+## 3. Collaborative Project Architecture & Evolution
+
+In alignment with the formative peer-development framework of **IDAI 102 (Formative Assessment 2)**, this software release represents the deliberate evolution from a foundational text starter script into an enterprise-grade clinical application:
 
 ```mermaid
 flowchart LR
@@ -104,7 +123,7 @@ flowchart LR
     Phase_2 --> Phase_3
 ```
 
-### 1.1 Detailed Engineering Division of Responsibilities
+### 3.1 Detailed Engineering Division of Responsibilities
 
 | Engineering Domain | Contributor | Detailed Execution & Scope |
 | :--- | :--- | :--- |
@@ -115,38 +134,14 @@ flowchart LR
 | **5-Avatar Companion Spirit Mascots** | **Parth Pravinbhai Gajera** | Created 5 animal companion characters (*HydroBuddy 🐢*, *Bubbles 🐬*, *Splash 🦦*, *Misty 💧*, *Pippin 🐧*) with 5 animated emotional SVG states (25 unique vector variations). |
 | **Tactile Vessel Chips & Stepper** | **Parth Pravinbhai Gajera** | Built 5 tactile physical container chips (250ml Mug, 250ml Glass, 350ml Tumbler, 500ml Bottle, 750ml Flask) and bounded numeric milliliter stepper for sub-second logging. |
 | **Bi-Directional Cup Converter** | **Parth Pravinbhai Gajera** | Designed the unit converter ($1\text{ cup} = 250\text{ ml}$) with direct 1-click `+ Add Converted Amount to Tracker` button integration. |
-| **Living Wall of Badges Engine** | **Parth Pravinbhai Gajera** | Developed real-time milestone evaluation transitioning achievement cards dynamically from monochrome grayscale ($opacity: 0.35$) to radiant glowing colors upon unlock. |
+| **Living Wall of Badges Engine** | **Parth Pravinbhai Gajera** | Developed real-time milestone evaluation transitioning achievement cards dynamically from monochrome grayscale to radiant glowing colors upon unlock. |
 | **In-Memory Headless Turtle Engine** | **Parth Pravinbhai Gajera** | Programmed the cloud-safe `HeadlessTurtle` class using Pillow (`PIL.ImageDraw`) to procedurally render water drops, sprout leaves, and 32-point gold scalloped medallions without Tkinter display crashes. |
 | **Dual-Palette Accessibility Theme** | **Parth Pravinbhai Gajera** | Implemented the dual-palette CSS theme engine (Obsidian Ocean Dark Mode default, Crisp Aqua Light Mode) guaranteeing WCAG 2.1 AA text visibility across all elements. |
 | **Cloud Deployment & Version Control** | **Parth Pravinbhai Gajera** | Configured dependencies, audited code hygiene, established GitHub repository, and deployed production application to Streamlit Community Cloud. |
 
 ---
 
-## 2. Design Thinking 5-Stage Methodology
-
-```mermaid
-flowchart LR
-    E["1. EMPATHIZE<br>Clinical Thirst Blunting<br>& Sedentary Workflows"] --> D["2. DEFINE<br>Calm Tech Principles<br>& WHO/EFSA Baselines"]
-    D --> I["3. IDEATE<br>Canva Visual Atlas<br>& 5-Screen Blueprint"]
-    I --> P["4. PROTOTYPE<br>60 FPS SVG Kinematics<br>& Headless Turtle Art"]
-    P --> T["5. TEST & DEPLOY<br>Adversarial Test Suite<br>& Streamlit Cloud"]
-```
-
-### Stage 2.1: Empathize — Understanding Real User Needs
-Through behavioral modeling across four demographic cohorts, critical hydration obstacles were identified:
-1. **Delayed Physiological Sensation**: Thirst is an inherently lagged biological indicator. By the time osmoreceptors trigger conscious thirst, cellular dehydration has already reached $1\%\text{--}2\%$, impairing cognitive processing and working memory.
-2. **Age-Related Hypodipsia**: Older adults experience natural blunting of thirst receptors, requiring scheduled prophylactic intake rather than intuitive sipping.
-3. **App Fatigue & Alert Anxiety**: Traditional health applications induce cognitive friction through shrill push notifications and aggressive guilt-based metrics, leading to rapid user abandonment.
-
-### Stage 2.2: Define — The Calm Technology Paradigm
-WaterBuddy adopts the principles of **Calm Technology** (pioneered at Xerox PARC by M. Weiser and John Seely Brown):
-- **Ambient Awareness**: Information is communicated peripherally through fluid animations, gentle color transitions, and expressive companion avatars rather than intrusive popups.
-- **Data Sovereignty & Volatile Privacy**: 100% of telemetry, user identity, and chronological logs reside exclusively in volatile memory (`st.session_state`). No cookies or remote databases are utilized.
-- **Zero-Latency Responsiveness**: Quick-log container chips execute in sub-millisecond local compute times.
-
----
-
-## 3. Research & Clinical Hydration Baselines
+## 4. Problem Understanding & Clinical Hydration Baselines (WHO / EFSA / NAM)
 
 WaterBuddy moves beyond generic "8 glasses a day" simplifications by operationalizing internationally validated nutritional guidelines established by the **World Health Organization (WHO)**, the **European Food Safety Authority (EFSA)**, and the **National Academy of Medicine (NAM)**.
 
@@ -158,7 +153,7 @@ flowchart TD
     DemographicAssessment --> Cohort4["Seniors Silver (65+ yrs)<br>Target: 1,800 ml / 7.2 cups<br>Focus: Prophylactic intake against hypodipsia"]
 ```
 
-### 3.1 Clinical Demographic Matrix
+### 4.1 Clinical Demographic Matrix
 
 | Demographic Cohort | Age Band | Baseline Volume | Baseline Cups (250ml) | Clinical & Physiological Rationale |
 | :--- | :---: | :---: | :---: | :--- |
@@ -169,44 +164,64 @@ flowchart TD
 
 ---
 
-## 4. Live Visual Interface & Screenshot Gallery
+## 5. System Architecture & Core Algorithmic State Machine
 
-The live production application showcases high-contrast dual-palette styling, responsive SVG kinematics, and clean typography:
+### 5.1 A Simple Algorithm We Have Designed
+To govern daily hydration tracking, visual feedback, and gamified rewards, WaterBuddy implements a deterministic state machine:
 
-### Screen 1: Welcome & Onboarding Gateway
-The standalone first-run onboarding screen captures user identity, binds clinical cohort targets dynamically, and previews the companion mascot spirit:
+```
+[User Interaction: Tactile Vessel Chip OR Custom Stepper OR Cup Converter]
+        │
+        ▼
+[Volume Validation: 10 ml ≤ Amount ≤ 2,000 ml]
+        │
+        ▼
+[State Mutation: Append to st.session_state.history & Increment total_consumed]
+        │
+        ├──> [Calculate Progress: P = (total_consumed / daily_goal) × 100]
+        ├──> [Calculate Deficit: R = max(0, daily_goal - total_consumed)]
+        ├──> [Compute Fluid Fill Height: H_fill = (min(100, P) / 100) × 220 px]
+        ├──> [Evaluate Mascot State: Asleep (0-24%), Awakening, Smiling, Joyful, Triumphant (100%+)]
+        ├──> [Evaluate Living Wall of Badges: Check Milestones -> Update Badges]
+        └──> [Check Vector Reward: If 25% -> Water Drop; 50% -> Leaf; 100% -> Rosette]
+```
 
-<div align="center">
-<img src="assets/screenshots/onboarding.png" alt="Screen 1: Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
-<p><em>Figure 1: Standalone Welcome & Onboarding Gateway showing demographic cohort selector, mascot spirit selection, and feature preview in high-contrast dark mode.</em></p>
-</div>
+### 5.2 Mathematical Foundations
 
-### Screen 2: Central Hydration Command Hub & Live Dashboard
-The operational workspace features the **Dual Visual Feedback Engine** (60 FPS Animated SVG Water Bottle + Interactive Mascot Avatar), KPI metrics, tactile vessel chips, and the bi-directional cup converter:
+$$\text{Hydration Progress Percentage } (P): \quad P = \left(\frac{C}{G}\right) \times 100$$
 
-<div align="center">
-<img src="assets/screenshots/dashboard.png" alt="Screen 2: Central Hydration Command Hub" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
-<p><em>Figure 2: Central Hydration Command Hub showcasing real-time animated fluid wave level, responsive mascot speech bubble, tactile container chips, and chronological ledger.</em></p>
-</div>
+$$\text{Remaining Volume Deficit } (R): \quad R = \max\left(0, \; G - C\right)$$
+
+$$\text{Cup-to-Milliliter Equivalence}: \quad \text{Volume}_{\text{ml}} = \text{Volume}_{\text{cups}} \times 250$$
+
+$$\text{Milliliter-to-Cup Equivalence}: \quad \text{Volume}_{\text{cups}} = \frac{\text{Volume}_{\text{ml}}}{250}$$
+
+$$\text{SVG Liquid Fill Height } (H_{\text{fill}}): \quad H_{\text{fill}} = \left(\frac{\min(100.0, \; P)}{100.0}\right) \times 220\text{ px}$$
+
+$$\text{SVG Water Surface Y-Coordinate } (Y_{\text{water}}): \quad Y_{\text{water}} = 270 - H_{\text{fill}}$$
+
+### 5.3 Session State Schema (`st.session_state`)
+
+```python
+st.session_state = {
+    "onboarded": bool,            # Gating flag separating Screen 1 from Screens 2-5
+    "user_name": str,             # User's chosen display name
+    "cohort": str,                # Selected clinical cohort from COHORTS dictionary
+    "companion": str,             # Selected companion character key
+    "goal": int,                  # Daily target volume in milliliters (default: 2000)
+    "total_consumed": int,        # Running total of consumed fluid in milliliters
+    "history": list[dict],        # Chronological ledger [{"time": str, "vessel": str, "amount": int, "running": int}]
+    "theme_mode": str,            # Active visual palette ("dark" or "light")
+    "converter_used": bool,       # Milestone trigger for Precision Hydrator badge
+    "confirm_reset": bool,        # Two-step confirmation modal flag
+}
+```
 
 ---
 
-## 5. Visual Storyboard & 5-Screen System Architecture
+## 6. Interface Design, Wireframes & Screenshot Gallery
 
-The operational workflow transitions through 5 interconnected states designed in our Canva Visual Atlas (`DAHaBqm9cZI`):
-
-```mermaid
-graph TD
-    A["Screen 1: Welcome & Onboarding Gateway<br>(Name, Demographic Cohort & Mascot Choice)"] -->|Initialize Session| B["Screen 2: Central Hydration Command Hub<br>(60 FPS Animated Bottle & Mascot Hero)"]
-    B --> C["Screen 3: Tactile Intake Logger<br>(5 Vessel Chips + Custom Stepper + Cup Converter)"]
-    B --> D["Screen 4: Procedural Vector Art Rewards<br>(In-Memory Headless Turtle Water Drops & Rosettes)"]
-    B --> E["Screen 5: Chronological Ledger & Habit Wall<br>(Living Wall of Badges, Undo Drink & CSV Export)"]
-    C -->|Update State & Telemetry| B
-    D -->|Milestone Render| B
-    E -->|Undo / Reset / Export| B
-```
-
-### 5.1 Screen Blueprints
+### 6.1 Screen Blueprints
 
 #### Screen 1: Welcome & Onboarding Gateway Blueprint
 ```
@@ -256,40 +271,23 @@ graph TD
 +-----------------------+-----------------------------------------------------------+
 ```
 
----
+### 6.2 Live Screenshot Gallery
 
-## 6. System Architecture & Mathematical State Machine
+#### Screen 1: Welcome & Onboarding Gateway
+The standalone first-run onboarding screen captures user identity, binds clinical cohort targets dynamically, and previews the companion mascot spirit:
 
-### 6.1 Mathematical Foundations
+<div align="center">
+<img src="assets/screenshots/onboarding.png" alt="Screen 1: Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
+<p><em>Figure 1: Standalone Welcome & Onboarding Gateway showing demographic cohort selector, mascot spirit selection, and feature preview in high-contrast dark mode.</em></p>
+</div>
 
-$$\text{Hydration Progress Percentage } (P): \quad P = \left(\frac{C}{G}\right) \times 100$$
+#### Screen 2: Central Hydration Command Hub & Live Dashboard
+The operational workspace features the **Dual Visual Feedback Engine** (60 FPS Animated SVG Water Bottle + Interactive Mascot Avatar), KPI metrics, tactile vessel chips, and the bi-directional cup converter:
 
-$$\text{Remaining Volume Deficit } (R): \quad R = \max\left(0, \; G - C\right)$$
-
-$$\text{Cup-to-Milliliter Equivalence}: \quad \text{Volume}_{\text{ml}} = \text{Volume}_{\text{cups}} \times 250$$
-
-$$\text{Milliliter-to-Cup Equivalence}: \quad \text{Volume}_{\text{cups}} = \frac{\text{Volume}_{\text{ml}}}{250}$$
-
-$$\text{SVG Liquid Fill Height } (H_{\text{fill}}): \quad H_{\text{fill}} = \left(\frac{\min(100.0, \; P)}{100.0}\right) \times 220\text{ px}$$
-
-$$\text{SVG Water Surface Y-Coordinate } (Y_{\text{water}}): \quad Y_{\text{water}} = 270 - H_{\text{fill}}$$
-
-### 6.2 Session State Schema (`st.session_state`)
-
-```python
-st.session_state = {
-    "onboarded": bool,            # Gating flag separating Screen 1 from Screens 2-5
-    "user_name": str,             # User's chosen display name
-    "cohort": str,                # Selected clinical cohort from COHORTS dictionary
-    "companion": str,             # Selected companion character key
-    "goal": int,                  # Daily target volume in milliliters (default: 2000)
-    "total_consumed": int,        # Running total of consumed fluid in milliliters
-    "history": list[dict],        # Chronological ledger [{"time": str, "vessel": str, "amount": int, "running": int}]
-    "theme_mode": str,            # Active visual palette ("dark" or "light")
-    "converter_used": bool,       # Milestone trigger for Precision Hydrator badge
-    "confirm_reset": bool,        # Two-step confirmation modal flag
-}
-```
+<div align="center">
+<img src="assets/screenshots/dashboard.png" alt="Screen 2: Central Hydration Command Hub" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
+<p><em>Figure 2: Central Hydration Command Hub showcasing real-time animated fluid wave level, responsive mascot speech bubble, tactile container chips, and chronological ledger.</em></p>
+</div>
 
 ---
 
@@ -323,7 +321,7 @@ flowchart LR
 
 ---
 
-## 8. 5-Avatar Companion Spirit System
+## 8. 5-Avatar Companion Spirit Mascot System (25 Vector Variations)
 
 Hydration consistency relies on emotional connection. WaterBuddy features **5 Companion Spirits**, each designed with distinct personality traits, motivational philosophies, and 5 responsive emotional states.
 
@@ -402,7 +400,7 @@ flowchart TD
 
 ---
 
-## 11. Tactile Logging, History Ledger & Data Sovereignty
+## 11. Tactile Logging, Bi-Directional Cup Converter & History Ledger
 
 ### 11.1 Ergonomic Vessel Chips & Custom Stepper
 WaterBuddy provides tactile logging mechanisms tailored for quick one-click interaction:
@@ -485,6 +483,6 @@ This submission—comprising the production codebase (`app.py`), the dependency 
 
 Following collaborative guidelines, foundational text-based starter routines were contributed by Subhan Syed, while the comprehensive visual system architecture, onboarding gateway, 60 FPS animated SVG fluid water bottle, 5-avatar companion spirits, tactile container chips, cup converter, living wall of badges, in-memory headless turtle vector graphics, dual-palette theme engine, and cloud deployment were designed, engineered, and executed by Parth Pravinbhai Gajera in direct alignment with the FA-1 visual atlas blueprint (`DAHaBqm9cZI`).
 
-**Student Developer:** Parth Pravinbhai Gajera (ID: 1000544)  
+**Student Developer:** Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
 **Collaborative Partner:** Subhan Syed  
 **Status:** Complete & Production Ready  
