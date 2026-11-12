@@ -18,7 +18,7 @@
 > **Project Partner**: Subhan Syed  
 > **School / Institutional Partner**: Aspee Nutan Academy / WACP International  
 > **Client Organization**: WellNest Technologies Pvt. Ltd. | Python Development Team  
-> **Foundational Planning Atlas**: [Canva Visual Atlas ID: DAHaBqm9cZI](https://www.canva.com/design/DAHaBqm9cZI/edit)  
+> **Foundational Planning Atlas**: [Canva Visual Atlas ID: DAHaBqm9cZI](https://www.canva.com/design/DAHars3Lfk4/1NikvoNTGVTVM2JzmDzuBQ/edit)  
 > **Live Interactive Application**: [https://waterbuddy-parth-gajera.streamlit.app/](https://waterbuddy-parth-gajera.streamlit.app/)  
 > **GitHub Repository URL**: [https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA](https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA)
 
