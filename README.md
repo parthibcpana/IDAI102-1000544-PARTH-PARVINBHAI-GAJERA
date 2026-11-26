@@ -74,7 +74,7 @@ flowchart TD
 | Intended Learning Outcome | What I Learned | How I Applied It in WaterBuddy |
 | :--- | :--- | :--- |
 | **ILO 1: Modular Python Applications** | Breaking formatting, calculations, graphics, and UI state into small helper functions makes debugging and UI refreshes far faster. | Structured [app.py](app.py) into discrete helpers (`calculate_progress`, `render_coastal_spring_svg`, `render_animated_bottle_svg`, `HeadlessTurtle`, `draw_vector_art`, `evaluate_badges`, `log_drink`, `open_custom_drink_dialog`). |
-| **ILO 2: Real-Time Data Processing** | Storing structured intake dictionaries inside `st.session_state` keeps totals, Altair charts, badge thresholds, and undo actions synchronized automatically. | Built an instant `intake_history` list storing `id`, `time`, `vessel`, `amount`, and cumulative `running_total` so KPI cards, Altair bars, and the ledger update together. |
+| **ILO 2: Real-Time Data Processing** | Storing structured intake dictionaries inside `st.session_state` keeps totals, Altair charts, badge thresholds, and undo actions synchronized automatically. | Built an instant `intake_history` list storing `id`, `time`, `vessel`, `amount`, and cumulative `running_total` so KPI cards, Altair timeline & consistency charts, and the ledger update together. |
 | **ILO 3: Interactive Streamlit Web Interface** | A calm, cohesive color token table, modal dialogs, and `.streamlit/config.toml` prevent harsh contrast clashes across light mode, dark mode, and mobile screens. | Configured Coastal Oasis Light default + Deep Tide Dark toggle, top-bar `+ Log Drink` `@st.dialog` modal, equal-height 3-panel Hero Studio, and `@media (max-width: 920px)` phone stacking. |
 | **ILO 4: Creative Visual Elements** | Base64-encoded SVG art and Pillow trigonometric turtle geometry eliminate OS display dependencies and render crisply across Windows, macOS, and cloud Linux. | Created a panoramic coastal waterfall welcome scene with hiker man and sea turtle, bespoke SVG vessel and badge icons, and a 4-piece `HeadlessTurtle` art vault. |
 | **ILO 5: Public Cloud Deployment** | Pinning minimal libraries in `requirements.txt` and shipping `.streamlit/config.toml` keeps cloud builds fast and theme-accurate on first visit. | Deployed `app.py`, `requirements.txt`, and `.streamlit/config.toml` publicly on [Streamlit Community Cloud](https://waterbuddy-parth-gajera.streamlit.app/). |
@@ -152,7 +152,7 @@ st.session_state = {
     "total_intake": int,         # Running cumulative water total for today
     "intake_history": list,      # [{"id", "time", "vessel", "amount", "running_total"}]
     "recent_art": str | None,    # Latest earned HeadlessTurtle key ("drop"|"traveler"|"leaf"|"badge")
-    "mascot_mood": str,          # "start"|"attentive"|"happy"|"energized"|"ecstatic"
+    "mascot_mood": str,          # "start"|"attentive"|"happy"|"energized"|"ecstatic"|"paced"|"caution"
     "show_reset_confirm": bool,  # Two-step daily reset guard flag
 }
 ```
@@ -166,100 +166,103 @@ WaterBuddy follows our 5-screen Canva Visual Atlas (`DAHars3Lfk4`) across an onb
 ```mermaid
 flowchart TD
     S1["Welcome Gateway<br>(Panoramic Coastal Waterfall SVG + Cohort Config)"] -->|Enter Dashboard| S2["Dashboard Studio<br>(+ Log Drink Modal CTA, 3-Card Hero, KPIs & Rapid Vessels)"]
-    S2 --> S3["Precision Converter & Analytics<br>(Altair Trajectory Bar Chart, Ledger & CSV Export)"]
+    S2 --> S3["Timeline Analytics & Ledger<br>(Clock-Time Line Chart, Consistency Score, Cumulative vs Goal & CSV Export)"]
     S2 --> S4["Wall of Badges<br>(5 Habit Badges + 4-Piece HeadlessTurtle Vault)"]
     S2 --> S5["Vessel & Calibration Studio<br>(5 Custom SVG Containers + WHO/EFSA Age Guide)"]
 ```
 
-### 5.1 Welcome & Onboarding Landscape (`onboarding_v2.png`)
-The opening screen pairs a custom base64-encoded coastal waterfall SVG scene (featuring alpine ridges, animated cascading falls, coastal coral lighthouse, reeds, a hydrated hiker holding a teal bottle, and HydroBuddy the Sea Turtle) with cohort calibration and live companion preview.
+### 5.1 Welcome & Onboarding Landscape (`onboarding_v3.png`)
+The opening screen pairs a custom base64-encoded coastal waterfall SVG scene (featuring alpine ridges, animated cascading falls, coastal coral lighthouse, reeds, a hydrated hiker holding a teal bottle, and HydroBuddy the Sea Turtle) with cohort calibration, companion selection, and a live 7-situation expression previewer.
 
 <div align="center">
-<img src="assets/screenshots/onboarding_v2.png" alt="Screen 1: Coastal Spring Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
-<p><em>Figure 1: Coastal Oasis Light welcome screen with animated waterfall horizon art, hiker & turtle companions, cohort calibration, and Calm Hydration Suite summary.</em></p>
+<img src="assets/screenshots/onboarding_v3.png" alt="Screen 1: Coastal Spring Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 1: Coastal Oasis Light welcome screen with animated waterfall horizon art, Python-Turtle Sea Turtle live expression previewer, and cohort calibration.</em></p>
 </div>
 
-### 5.2 Main Dashboard Studio Light Mode (`dashboard_v2.png`)
-The top action bar keeps the primary `+ Log Drink` button in first view alongside quick tab pills (`Dashboard`, `Badges`, `Vessels`), above an equal-height 3-panel Hero Studio (`Fluid Chamber`, `Companion Coach`, `Hydro Art Vault`), four KPI cards, and one-tap bespoke SVG vessel chips.
+### 5.2 Main Dashboard Studio Light Mode (`dashboard_v3.png`)
+The top action bar keeps the primary `+ Log Drink` button in first view alongside synced tab pills (`Dashboard`, `Badges`, `Vessels`), above an equal-height 3-panel Hero Studio (`Fluid Chamber`, `Companion Coach`, `Hydro Art Vault`), four KPI cards, and 3D container logging chips.
 
 <div align="center">
-<img src="assets/screenshots/dashboard_v2.png" alt="Screen 2: Dashboard Studio in Coastal Oasis Light Mode" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
-<p><em>Figure 2: Coastal Oasis Light Dashboard showing the equal-height 3-panel Hero Studio, first-view + Log Drink CTA, 4 KPI metrics, and custom SVG vessel logging chips.</em></p>
+<img src="assets/screenshots/dashboard_v3.png" alt="Screen 2: Dashboard Studio in Coastal Oasis Light Mode" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 2: Coastal Oasis Light Dashboard showing the 3D animated glass Fluid Chamber, reactive sipping HydroBuddy Turtle with mood badge, Hydro Art Vault, 4 KPI metrics, and 3D vessel cards.</em></p>
 </div>
 
-### 5.3 Deep Tide Dark Mode at 105% Goal (`dashboard_dark_v1.png`)
-Toggling Deep Tide Dark Mode adapts every card surface, divider ornament, Altair chart axis, modal dialog, and vessel icon cleanly to low-glare coastal slate (`#101B21`), while showing HydroBuddy's celebratory gold sunglasses and the unlocked Ocean Championship Rosette.
+### 5.3 Deep Tide Dark Mode at 105% Goal (`dashboard_dark_v2.png`)
+Toggling Deep Tide Dark Mode adapts every card surface, divider ornament, Altair chart axis, modal dialog, and 3D glass reflection cleanly to low-glare coastal slate (`#101B21`), while showing HydroBuddy's Python-Turtle golden shell trim, floating gold crown, aviator sunglasses, and the Ocean Championship Rosette.
 
 <div align="center">
-<img src="assets/screenshots/dashboard_dark_v1.png" alt="Screen 3: Deep Tide Dark Mode at 105% Goal" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
-<p><em>Figure 3: Deep Tide Dark Mode showcasing adaptive surface contrast, ecstatic companion sunglasses state, and Ocean Championship Rosette reward.</em></p>
+<img src="assets/screenshots/dashboard_dark_v2.png" alt="Screen 3: Deep Tide Dark Mode at 105% Goal" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
+<p><em>Figure 3: Deep Tide Dark Mode showcasing 105% 3D bottle fill with goal sparkles, ecstatic companion crown & shades state, and Ocean Championship Rosette reward.</em></p>
 </div>
 
-### 5.4 Wall of Badges & Hydro Art Collector Vault (`badges_v2.png`)
-Unlocked milestones illuminate in deep coastal teal (`#1A7887`) with crisp white custom vector icons alongside the 4-piece Pillow `HeadlessTurtle` Collector Vault (`Crystal Droplet`, `Spring Hiker & Turtle`, `Hydration Sprout`, and `Ocean Rosette`).
+### 5.4 Wall of Badges & Hydro Art Collector Vault (`badges_v3.png`)
+Unlocked milestones illuminate in deep coastal teal (`#1A7887`) with 3D trophy emblems alongside the 4-piece Pillow `HeadlessTurtle` Collector Vault (`Crystal Droplet`, `Spring Hiker & Turtle`, `Hydration Sprout`, and `Ocean Rosette`).
 
 <div align="center">
-<img src="assets/screenshots/badges_v2.png" alt="Screen 4: Wall of Badges & Hydro Art Vault" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
-<p><em>Figure 4: Living Wall of Badges at 5 of 5 Complete plus all 4 unlocked procedural artworks rendered in-memory by HeadlessTurtle + Pillow.</em></p>
+<img src="assets/screenshots/badges_v3.png" alt="Screen 4: Wall of Badges & Hydro Art Vault" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 4: Living Wall of Badges at 5 of 5 Complete with 3D trophy emblems plus all 4 unlocked procedural artworks rendered in-memory by HeadlessTurtle + Pillow.</em></p>
 </div>
 
-### 5.5 Vessel & Hydration Calibration Studio (`vessel_studio_v1.png`)
-Reference studio comparing all five container silhouettes (`Coffee Mug`, `Water Glass`, `Travel Tumbler`, `Sports Bottle`, `Hydro Flask`) directly beside age-calibrated fluid targets.
+### 5.5 Vessel & Hydration Calibration Studio (`vessel_studio_v2.png`)
+Interactive studio featuring a 3D vessel lineup banner, five clickable 3D beverage containers (`Coffee Mug`, `Water Glass`, `Travel Tumbler`, `Sports Bottle`, `Hydro Flask`), and 3D age cohort persona cards with one-click goal calibration.
 
 <div align="center">
-<img src="assets/screenshots/vessel_studio_v1.png" alt="Screen 5: Vessel & Hydration Calibration Studio" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
-<p><em>Figure 5: Vessel & Hydration Calibration Studio displaying standardized container volumes alongside WHO / EFSA cohort baselines.</em></p>
+<img src="assets/screenshots/vessel_studio_v2.png" alt="Screen 5: Vessel & Hydration Calibration Studio" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 5: Interactive 3D Vessel & Hydration Calibration Studio with one-tap container logging and WHO / EFSA cohort persona cards.</em></p>
 </div>
 
 ---
 
-## 6. Animated Fluid Chamber & Companion Coach Engine
+## 6. 3D Animated Fluid Chamber & Companion Coach Engine
 
 In place of flat horizontal progress bars, WaterBuddy pairs two synced hero modules inside an equal-height CSS grid (`studio-grid`):
 
 ```mermaid
 flowchart LR
-    Log["User Logs Water"] --> Chamber["Fluid Chamber SVG<br>- Dynamic Height Clip Path<br>- Continuous Sine Wave Loop<br>- High-Contrast Dark Pill Readout"]
-    Log --> Coach["Companion Coach Card<br>- Live Mascot Expression Tier<br>- Contextual Dialogue Bubble<br>- Next Badge Progress Bar"]
+    Log["User Logs Water"] --> Chamber["3D Glass Fluid Chamber SVG<br>- Cylindrical Lighting & Fresnel Rim<br>- Dual Counter Waves & 3D Meniscus<br>- 5 Rising Micro-Bubbles & Etched Ticks<br>- Frosted Telemetry HUD Pill"]
+    Log --> Coach["Companion Coach Card<br>- Live 7-State Animated Mascot<br>- First-Sip, Milestone & Over-Hydration Speech<br>- Monotonic Hydration Journey Bar (Stays 100% Full at Goal+)"]
 ```
 
-1. **Clipped Water Boundary:** `<clipPath id="wb2-clip">` confines all wave geometry inside the ergonomic glass contour.
-2. **Smooth Sine-Wave Flow:** CSS `@keyframes wb-wave` gently shifts the wave surface across 4-second loops without JavaScript timers.
-3. **Always-Legible Center Badge:** A high-contrast pill inside the chamber (`44%`, `1,100 / 2,500 ml`) stays readable whether empty, half full, or above 100%.
+1. **3D Cylindrical Glass & Reflections:** Layered glass wall highlights, crystal base prism, right rim bounce sheen, and a brushed-teal grooved screw cap enclose the clipped liquid chamber (`<clipPath id="..._clip">`).
+2. **Dual Counter Waves & 3D Meniscus:** Counter-flowing foreground/background sine waves (`wb-wf` / `wb-wb`), a gently breathing elliptical top water meniscus (`wb-men`), and 5 staggered rising bubbles animate cleanly without JavaScript timers.
+3. **Laser-Etched Ticks & HUD Capsule:** Engraved `25%`, `50%`, `75%`, and `100%` graduation marks illuminate as the water rises past each mark beside an unobstructed high-contrast HUD capsule (`44%`, `1,100 / 2,500 ml`), switching cleanly to golden surplus (`125%` to `149%`) and amber guardrail warnings at `150%+` or `>4,500 ml`.
 
 ---
 
-## 7. Five Companion Spirit Mascots & Reactive States
+## 7. Five Companion Spirit Mascots & Situational Behaviors
 
-Every user selects a companion spirit on onboarding that moves through five expressive moods as hydration progresses during the day:
+All five companions animate dynamically across **seven live situational expressions**, updating posture, limb motion speed, eyes, mouth, and props directly from hydration progress, first-sip excitement, user actions (`log`, `undo`, `reset`, `goal_change`), and over-hydration thresholds without resetting progress back to zero after goal completion:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> start: 0% to 24% (Gentle Invitation)
-    start --> attentive: 25% to 49% (Momentum Building)
-    attentive --> happy: 50% to 74% (Halfway Cleared)
-    happy --> energized: 75% to 99% (Final Glass Stretch)
-    energized --> ecstatic: 100%+ (Gold Sunglasses Victory)
+    [*] --> start: 0% Morning Calm (Sleepy eyes, gentle sway, Stage 1 kickoff cue)
+    start --> attentive: First Sip / 1% to 49% (Curious tilt, holding water glass, first-sip praise)
+    attentive --> happy: 50% to 74% (Blinking eyes, rosy cheeks, waving limb)
+    happy --> energized: 75% to 99% (Energetic hop, dual cheer wave, star sparkles)
+    energized --> ecstatic: 100% to 124% Goal Triumph (Shades, crown, Stage 5/5 stays at 100%)
+    ecstatic --> paced: 125% to 149% Mindful Surplus (Serene teal-gold pause cue)
+    paced --> caution: 150%+ or >4,500 ml (Over-hydration alert, amber shiver guard)
+    energized --> caution: Rapid jump >=150% or >4,500 ml
     ecstatic --> start: New Day Reset
 ```
 
-| Companion Name | Character Design | Hydration Encouragement Focus |
+| Companion Name | Character & Animation Build | Hydration Encouragement Focus |
 | :--- | :--- | :--- |
-| **HydroBuddy the Sea Turtle** | Layered coastal teal shell explorer | Wise ocean navigator focused on calm, steady sipping rhythm |
-| **Bubbles the Playful Dolphin** | Streamlined agile sea swimmer | High-energy celebrator for rapid multi-drink streaks |
-| **Splash the River Otter** | Warm brown river otter holding crystal drop | Consistent mover encouraging regular hourly refills |
-| **Misty the Friendly Raindrop** | Minimalist droplet elemental with highlight | Gentle reminder of steady focus and temperature balance |
-| **Pippin the Polar Penguin** | Crisp black-and-white Antarctic penguin | Refreshing fan of chilled water bottles and recovery |
+| **HydroBuddy the Sea Turtle** | Driven directly by Python `HeadlessTurtle` vector geometry (`trace_oval_svg_pts`, `trace_turtle_shell_scutes`) with animated flippers & blinking eyes | Wise ocean navigator focused on calm, steady sipping rhythm |
+| **Bubbles the Playful Dolphin** | 3D-shaded teal dolphin with swept dorsal crest, wagging tail fluke & waving pectoral fins | High-energy celebrator for rapid multi-drink streaks |
+| **Splash the River Otter** | Warm caramel otter with pink ears, whiskers, waving paws & glowing water pearl (gold at 100%) | Consistent mover encouraging regular hourly refills |
+| **Misty the Friendly Raindrop** | Glossy liquid-gradient elemental teardrop with animated droplet hands & shimmer aura | Gentle reminder of steady focus and temperature balance |
+| **Pippin the Polar Penguin** | Slate tuxedo penguin with coastal-teal scarf & flapping wings | Refreshing fan of chilled water bottles and recovery |
 
 ---
 
-## 8. Cloud-Safe Headless Turtle Vector Art Vault (Pillow)
+## 8. Cloud-Safe Headless Turtle Vector Engine (SVG + Pillow)
 
 Because Python's standard `turtle` library opens a native desktop `tkinter` window, importing it on Linux cloud hosting immediately throws:
 ```text
 _tkinter.TclError: no display name and no $DISPLAY environment variable
 ```
-Our custom `HeadlessTurtle` class mirrors `forward`, `left`, `right`, `penup`, `pendown`, `goto`, and `arc` trigonometry directly onto an in-memory `280x280` `PIL.Image` RGBA canvas, generating four downloadable coastal emblems:
+Our custom `HeadlessTurtle` class mirrors `forward`, `left`, `right`, `penup`, `pendown`, `goto`, and `arc` trigonometry both into **animated SVG path coordinates** (powering HydroBuddy's hexagonal carapace ribs, flippers, and star geometry) and onto an in-memory `280x280` `PIL.Image` RGBA canvas generating four downloadable coastal emblems:
 
 | Artwork Key | Artwork Title | Unlock Requirement | Procedural Geometry |
 | :--- | :--- | :--- | :--- |
@@ -286,34 +289,34 @@ flowchart TD
     B5 -- Yes --> U5["Calibration Master (Unlocked Teal)"]
 ```
 
-Every badge evaluates live against `intake_history`, illuminates in coastal teal (`#1A7887`) with crisp white SVG vector icons (`render_badge_svg`) once earned, and gracefully returns to muted gray lock tiles when resetting the day.
+Every badge evaluates live against `intake_history`, illuminates in coastal teal (`#1A7887`) with 3D trophy emblems (`render_badge_svg`) once earned, and gracefully returns to muted gray lock tiles when resetting the day.
 
 ---
 
 ## 10. Rapid Vessel Logging, Cup Converter & Hydration Ledger
 
-1. **One-Tap Rapid Vessels:** Five uniform cards with custom coastal teal SVG container silhouettes (`Coffee Mug 250 ml`, `Water Glass 250 ml`, `Travel Tumbler 350 ml`, `Sports Bottle 500 ml`, `Hydro Flask 750 ml`).
+1. **One-Tap 3D Rapid Vessels:** Five uniform cards with 3D container assets (`Coffee Mug 250 ml`, `Water Glass 250 ml`, `Travel Tumbler 350 ml`, `Sports Bottle 500 ml`, `Hydro Flask 750 ml`).
 2. **First-View `+ Log Drink` Modal:** Clicking `+ Log Drink` in the top navigation bar opens `@st.dialog("Log Custom Water Intake")` to record any custom volume (`10` to `2,500 ml`) and custom beverage label immediately.
 3. **Aligned Precision Steppers & Cup Converter:** Twin bordered cards pair a custom milliliter form (`10` to `2,500 ml`) right next to a live Cup Converter (`0.5` to `15.0` cups multiplied cleanly by `250 ml`).
-4. **Altair Trajectory Bar Chart & Progress Ledger:** Visualizes cumulative daily growth alongside a clean table featuring inline progress bars, one-click `Undo Last Drink`, `Export Intake CSV`, and guarded daily reset confirmation.
+4. **Intake Timeline Line Graph, Consistency Analytics & Chronological Ledger:** Pairs an Altair clock-time Intake Timeline chart (showing exact logged times, volumes, Period color coding, drop stems, and mean sip rule) with tabbed **Pacing & Consistency** (`Morning` / `Afternoon` / `Evening` distribution vs balanced `goal / 3` target) and **Cumulative vs Goal** views, plus rhythm KPI cards (`Sip Frequency`, `Rhythm Consistency %`, `Peak Single Intake`), a full chronological `ProgressColumn` dataset, one-click `Undo Last Drink`, `Export Intake CSV`, and guarded daily reset confirmation.
 
 ---
 
 ## 11. Verification & Multi-Scenario Test Proof
 
-We verified end-to-end state changes (`AppTest` automated assertions covering onboarding, all 5 vessels, custom form, cup converter, undo rollback, Deep Tide Dark toggle, modal opening, badge counts, and vessel studio) alongside headless Chrome desktop (`1420px`) and mobile (`412px`) inspections.
+We verified end-to-end state changes (`AppTest` automated assertions covering onboarding, all 5 vessels, custom form, cup converter, undo rollback, Deep Tide Dark toggle, modal opening, badge counts, vessel studio, and sidebar/header navigation sync) plus a full `5 mascots x 7 moods` visual matrix and headless Chrome desktop (`1420px`) & mobile (`412px`) captures.
 
 | Test Case | Setup / Action | Logged Total | Progress & Rank | Badges Unlocked | Hydro Art Unlocked |
 | :--- | :--- | :---: | :---: | :--- | :--- |
-| **1. Initial Coastal Onboarding** | Adults (`2,500 ml` target), HydroBuddy selected | `0 ml` | `0.0%` (`Seedling Sipper`) | `0 of 5` | Spring Seed Preview |
+| **1. Initial Coastal Onboarding** | Adults (`2,500 ml` target), HydroBuddy selected + 7-state previewer | `0 ml` | `0.0%` (`Seedling Sipper`) | `0 of 5` | Spring Seed Preview |
 | **2. Midday Studio Sequence** | `250` Mug + `350` Tumbler + `500` Bottle (`?demo=true`) | `1,100 ml` | `44.0%` (`Flowing Stream`) | `2 of 5` (`First Sip`, `Steady Pacer`) | `Crystal Water Droplet` + `Hiker` |
 | **3. Cup Converter & Custom Step** | Log Custom `150 ml` + Convert `1.5` cups (`+375 ml`), then Undo | `2,250 ml` | `102.3%` (`Ocean Master`) | `5 of 5` (calibrated `2,200 ml` goal) | All 4 Artworks Unlocked |
 | **4. 105% Goal Victory Sequence** | `5` drinks (`?demo=full` on custom `2,000 ml` goal) | `2,100 ml` | `105.0%` (`Ocean Master`) | `5 of 5 (100% Complete)` | `Ocean Championship Rosette` |
-| **5. Mobile & Dark Modal Check** | Toggle Deep Tide Dark + open `+ Log Drink` + `412x915` viewport | Live parity | Clean readable contrast | Responsive stacked layout | Crisp SVG icons across views |
+| **5. Dark Mode, Guardrail & Mobile** | Toggle Deep Tide Dark + `+ Log Drink` + `412x915` viewport + `150%+ / >4,500 ml` caution check | Live parity | Clean readable contrast | Responsive stacked layout | All 5 mascots x 7 moods verified |
 
 <div align="center">
-<img src="assets/screenshots/test_proof_collage_v2.png" alt="Multi-Scenario Verification Test Proof Collage" width="900" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
-<p><em>Figure 6: Side-by-side live verification capturing Test 1 (Coastal Oasis Studio & Hero Cards), Test 2 (Cup Converter, Altair Trajectory Chart & Progress Ledger), and Test 3 (5/5 Badges & 4-Piece Hydro Art Vault).</em></p>
+<img src="assets/screenshots/test_proof_collage_v3.png" alt="Multi-Scenario Verification Test Proof Collage" width="900" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 6: Side-by-side live verification capturing Test 1 (3D Fluid Chamber & Reactive Turtle Coach), Test 2 (Intake Timeline Line Chart, Pacing & Consistency & Chronological Ledger), and Test 3 (5/5 3D Badges & 4-Piece Hydro Art Vault).</em></p>
 </div>
 
 ---
@@ -337,7 +340,7 @@ streamlit run app.py
 ```
 
 ### 12.2 Deployed Files for Streamlit Community Cloud
-1. Ensure [app.py](app.py), [requirements.txt](requirements.txt), [.streamlit/config.toml](.streamlit/config.toml), and [README.md](README.md) are pushed to `main`.
+1. Ensure [app.py](app.py), [requirements.txt](requirements.txt), [.streamlit/config.toml](.streamlit/config.toml), `assets/`, and [README.md](README.md) are pushed to `main`.
 2. Connect repository `parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA` on [share.streamlit.io](https://share.streamlit.io/) with main file path `app.py`.
 
 ---
@@ -346,12 +349,12 @@ streamlit run app.py
 
 | Requirement Area | Implementation Standard in WaterBuddy | Verification Outcome |
 | :--- | :--- | :--- |
-| **Age Cohort Calibration** | 4 WHO/EFSA cohorts (`1,600` to `2,500 ml/day`) plus live custom target override | Dynamically recalculates KPIs, fill %, and `Calibration Master` badge |
-| **Dual Visual Feedback** | Animated clipped SVG Fluid Chamber + 5 Companion mascots across 5 emotional states | Verified SVG state transitions at `0%`, `44%`, and `105%` fills |
-| **Headless Turtle Engine** | In-memory Pillow `HeadlessTurtle` rendering 4 `280x280` RGBA emblems | Zero Tkinter crashes in headless environments; PNG downloads verified |
-| **Low-Friction Logging** | Top `+ Log Drink` modal, 5 SVG rapid vessels, custom stepper, and Cup Converter | Verified sub-second updates across `AppTest` and live Chrome captures |
-| **Data Transparency & Undo** | Altair progression bar chart, `ProgressColumn` ledger, `Undo Last Drink`, and CSV export | Non-destructive undo restores totals, mascot mood, and active artwork |
-| **Dual Theme & Mobile Layout** | Native Coastal Oasis Light (`.streamlit/config.toml`) + Deep Tide Dark + `<=920px` CSS | Verified high legibility on desktop (`1420px`) and mobile (`412px`) |
+| **Age Cohort Calibration** | 4 WHO/EFSA cohorts (`1,600` to `2,500 ml/day`) plus live custom target override & 3D personas | Dynamically recalculates KPIs, fill %, and `Calibration Master` badge |
+| **3D Fluid Visual Feedback** | 3D glass bottle with counter waves, meniscus, 5 bubbles, laser ticks + 5 mascots across 7 reactive states | Verified across `0%` to `210%` fills and all 35 mascot expressions |
+| **Headless Turtle Engine** | In-memory `HeadlessTurtle` driving HydroBuddy SVG geometry + 4 `280x280` RGBA emblems | Zero PNG mascot dependency; zero Tkinter crashes in headless environments |
+| **Low-Friction Logging** | Top `+ Log Drink` modal, 5 3D rapid vessels, interactive Vessel Studio, custom stepper, and Cup Converter | Verified sub-second updates across `AppTest` and live Chrome captures |
+| **Timeline Analytics & Undo** | Clock-time Intake Timeline line graph, Period Pacing & Consistency chart, Cumulative vs Goal tab, `ProgressColumn` ledger, `Undo Last Drink`, and CSV export | Non-destructive undo restores totals, mascot mood, coach progression, and active artwork |
+| **Dual Theme & Mobile Layout** | Native Coastal Oasis Light (`.streamlit/config.toml`) + Deep Tide Dark + `<=920px` CSS + synced sidebar/header tabs | Verified high legibility on desktop (`1420px`) and mobile (`412px`) |
 
 ---
 
@@ -359,7 +362,7 @@ streamlit run app.py
 
 This submission comprises our complete Streamlit codebase ([app.py](app.py)), Streamlit theme config ([.streamlit/config.toml](.streamlit/config.toml)), dependency manifest ([requirements.txt](requirements.txt)), and documentation ([README.md](README.md)) built by **Parth Pravinbhai Gajera** (Candidate ID: `1000544`) and project partner **Subhan Syed** for **IDAI 102: Python Programming** at **Aspee Nutan Academy / WACP International** under the **WellNest Technologies Pvt. Ltd.** brief.
 
-Foundational text-based starter routines were contributed by Subhan Syed, while the full Streamlit visual architecture, coastal waterfall welcome scene, animated SVG fluid chamber, five-avatar companion coach, custom container silhouettes, `+ Log Drink` modal workflow, cup converter, living wall of badges, in-memory Pillow `HeadlessTurtle` art vault, Altair progression chart, light/dark dual palette system, and cloud deployment were engineered by Parth Pravinbhai Gajera in alignment with our FA-1 Canva visual atlas (`DAHars3Lfk4`).
+Foundational text-based starter routines were contributed by Subhan Syed, while the full Streamlit visual architecture, coastal waterfall welcome scene, animated SVG fluid chamber, five-avatar companion coach with over-hydration guardrails, custom container silhouettes, `+ Log Drink` modal workflow, cup converter, living wall of badges, in-memory Pillow `HeadlessTurtle` art vault, clock-time timeline and consistency analytics, light/dark dual palette system, and cloud deployment were engineered by Parth Pravinbhai Gajera in alignment with our FA-1 Canva visual atlas (`DAHars3Lfk4`).
 
 **Student Developer:** Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
 **Project Partner:** Subhan Syed  
