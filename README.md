@@ -1,14 +1,14 @@
 <div align="center">
 
-# WaterBuddy — Your Daily Hydration Companion
-### *Intelligent, Clinical-Grade Hydration Architecture & Habit Formation System*
+# WaterBuddy: Your Daily Hydration Companion
+### *Simple, Calibrated Hydration Tracking & Visual Habit Companion*
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://waterbuddy-parth-gajera.streamlit.app/)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-0284C7.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-1A7887.svg)](https://www.python.org/)
 [![Framework: Streamlit](https://img.shields.io/badge/framework-Streamlit%201.35+-FF4B4B.svg)](https://streamlit.io/)
-[![Status: Operational](https://img.shields.io/badge/status-Operational-10B981.svg)]()
+[![Charts: Altair](https://img.shields.io/badge/charts-Altair%205+-1A7887.svg)](https://altair-viz.github.io/)
 [![Design: Human--Centered](https://img.shields.io/badge/design-Human--Centered-8B5CF6.svg)]()
-[![Theme: Obsidian%20Ocean](https://img.shields.io/badge/theme-Obsidian%20Ocean-0284C7.svg)]()
+[![Theme: Coastal%20Oasis](https://img.shields.io/badge/theme-Coastal%20Oasis-1A7887.svg)]()
 
 </div>
 
@@ -16,11 +16,10 @@
 > **Course Code:** `IDAI 102` (Python Programming)  
 > **Assignment Title:** Design 'WaterBuddy': Your Daily Hydration Companion  
 > **Type of Assessment:** Formative Assessment 2 (FA-2: Developing and Deploying App Using Python)  
-> **Scenario Track:** WellNest Technologies Pvt. Ltd. — Clinical Hydration System  
+> **Scenario Track:** WellNest Technologies Pvt. Ltd. | Hydration Habit System  
 > **Student Developer:** Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
 > **Project Partner:** Subhan Syed  
 > **School / Institutional Partner:** Aspee Nutan Academy / WACP International  
-> **Client Organization:** WellNest Technologies Pvt. Ltd. | Python Development Team  
 > **Foundational Planning Atlas:** [Canva Visual Atlas ID: DAHars3Lfk4](https://www.canva.com/design/DAHars3Lfk4/1NikvoNTGVTVM2JzmDzuBQ/edit)  
 > **Live Interactive Application:** [https://waterbuddy-parth-gajera.streamlit.app/](https://waterbuddy-parth-gajera.streamlit.app/)  
 > **GitHub Repository URL:** [https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA](https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA)
@@ -31,44 +30,40 @@
 
 1. [Project Purpose & Student Learning Journey](#1-project-purpose--student-learning-journey)
 2. [Intended Learning Outcomes: Knowledge Acquired & Practical Evidence](#2-intended-learning-outcomes-knowledge-acquired--practical-evidence)
-3. [Problem Understanding & Clinical Hydration Baselines (WHO / EFSA / NAM)](#3-problem-understanding--clinical-hydration-baselines-who--efsa--nam)
-4. [System Architecture & Core Algorithmic State Machine](#4-system-architecture--core-algorithmic-state-machine)
+3. [Problem Understanding & Clinical Hydration Baselines (WHO / EFSA)](#3-problem-understanding--clinical-hydration-baselines-who--efsa)
+4. [System Architecture & Core Logic Flow](#4-system-architecture--core-logic-flow)
 5. [Interface Architecture & Live Screenshot Gallery](#5-interface-architecture--live-screenshot-gallery)
-6. [Dual Visual Feedback & 60 FPS Animated SVG Water Bottle Engine](#6-dual-visual-feedback--60-fps-animated-svg-water-bottle-engine)
-7. [5-Avatar Companion Spirit Mascot System (25 Vector Variations)](#7-5-avatar-companion-spirit-mascot-system-25-vector-variations)
-8. [Procedural In-Memory Headless Turtle Vector Graphics Engine](#8-procedural-in-memory-headless-turtle-vector-graphics-engine)
-9. [Living Wall of Badges & Habit Gamification](#9-living-wall-of-badges--habit-gamification)
-10. [Tactile Logging, Bi-Directional Cup Converter & History Ledger](#10-tactile-logging-bi-directional-cup-converter--history-ledger)
-11. [Verification & Scenario Stress-Testing Matrix](#11-verification--scenario-stress-testing-matrix)
+6. [Animated Fluid Chamber & Companion Coach Engine](#6-animated-fluid-chamber--companion-coach-engine)
+7. [Five Companion Spirit Mascots & Reactive States](#7-five-companion-spirit-mascots--reactive-states)
+8. [Cloud-Safe Headless Turtle Vector Art Vault (Pillow)](#8-cloud-safe-headless-turtle-vector-art-vault-pillow)
+9. [Living Wall of Badges & Habit Milestones](#9-living-wall-of-badges--habit-milestones)
+10. [Rapid Vessel Logging, Cup Converter & Hydration Ledger](#10-rapid-vessel-logging-cup-converter--hydration-ledger)
+11. [Verification & Multi-Scenario Test Proof](#11-verification--multi-scenario-test-proof)
 12. [Deployment & Local Installation Guide](#12-deployment--local-installation-guide)
-13. [System Standards & Architecture Specifications](#13-system-standards--architecture-specifications)
+13. [System Standards & Technical Alignment](#13-system-standards--technical-alignment)
 14. [Academic Integrity Statement](#14-academic-integrity-statement)
 
 ---
 
 ## 1. Project Purpose & Student Learning Journey
 
-### 1.1 Academic Rationale & What We Aimed to Learn
-The primary objective of this Formative Assessment (FA-2) was to transition from foundational conceptual architecture (FA-1 visual atlas) into a fully functional, clinical-grade software application using Python and Streamlit. This milestone tested our ability to synthesize clinical nutritional science with modern reactive web engineering:
+WaterBuddy transforms our FA-1 conceptual storyboard into a live, privacy-first Streamlit web app that helps people track daily water intake without noisy alarms or generic "8 glasses for everyone" rules. Users set an age-calibrated daily fluid target, log drinks in one click via real container cards or the first-view `+ Log Drink` modal, watch their companion spirit and animated water chamber respond live, and collect custom vector badges and artwork.
 
-1. **Translating Storyboards into Production Code:** Transforming the 5-screen Canva Visual Atlas (`DAHars3Lfk4`) designed in FA-1 into responsive, interactive Streamlit components without architectural drift.
-2. **Implementing Clinical Hydration Models:** Operationalizing demographic intake baselines from the World Health Organization (WHO) and European Food Safety Authority (EFSA) to replace generic "8 glasses a day" simplifications.
-3. **Engineering Cloud-Safe Vector Kinematics:** Resolving the critical headless server display crash (`TclError: no display name`) by developing an in-memory trigonometric vector turtle engine on Pillow.
-4. **Architecting Ambient Visual Feedback:** Applying the principles of **Calm Technology** to replace intrusive push notifications with ambient fluid wave animations, micro-bubbles, and responsive mascot emotions.
-5. **Collaborative Software Engineering:** Practicing peer engineering division of labor—evolving a foundational text starter script into an enterprise-grade cloud release.
-
-### 1.2 Application Purpose & Realized Objectives (WellNest Technologies Pvt. Ltd.)
-In accordance with the project brief for **WaterBuddy**, the explicit purpose of the application is to serve as an intelligent, privacy-preserving hydration companion that helps users build consistent, healthy daily fluid habits:
+### What We Built Around the User Brief
+1. **Age-Calibrated Baselines:** Instead of a one-size-fits-all target, WaterBuddy tailors daily fluid goals across four age groups (Kids, Teens, Adults, Seniors) with an adjustable fine-tuner.
+2. **Low-Friction First-View Logging:** A prominent `+ Log Drink` button at the top right lets any returning user record a drink immediately without scrolling past charts.
+3. **Calm Visual Feedback:** Pure CSS fluid wave motion, subtle droplet dividers, and five expressive mascot companions replace nagging push alerts.
+4. **Cloud-Safe Procedural Art:** Standard Python `turtle` crashes on Linux cloud servers lacking a display (`TclError: no display name`), so we built an in-memory `HeadlessTurtle` engine on Pillow.
 
 ```mermaid
 flowchart TD
-    subgraph Core_Mission ["💧 WaterBuddy Core Functional Mission"]
-        M1["Personalized Demographics: Dynamically prescribe targets across 4 cohorts (1,200ml to 2,000ml)"]
-        M2["Ergonomic Logging: Provide 5 tactile physical container chips (250ml to 750ml) for sub-second logging"]
-        M3["Bi-Directional Unit Conversion: Convert between imperial cups and metric ml with 1-click ledger logging"]
-        M4["Synchronized Visual Feedback: 60 FPS animated SVG fluid wave bottle + 5 expressive companion spirits"]
-        M5["Milestone Recognition: Dynamic Living Wall of Badges unlocking from grayscale to glowing color"]
-        M6["Data Sovereignty: Volatile local memory tracking with 1-click Undo rollback and RFC 4180 CSV export"]
+    subgraph Core_Mission ["WaterBuddy Core Functional Mission"]
+        M1["Age-Based Goals: Calibrate daily targets across 4 cohorts (1,600 ml to 2,500 ml)"]
+        M2["One-Tap Vessels: Log 5 real containers (250 ml to 750 ml) with custom SVG silhouettes"]
+        M3["Quick Modal + Cup Converter: Record exact ml via top CTA modal or 250 ml cup steps"]
+        M4["Live Visual Studio: Animated SVG water bottle, 5 companion mascots & Hero Art preview"]
+        M5["Badges & Headless Art: 5 milestone cards + 4 Pillow vector emblems unlocked live"]
+        M6["Private Session History: In-memory log with Altair progression chart, Undo & CSV export"]
     end
 ```
 
@@ -76,103 +71,89 @@ flowchart TD
 
 ## 2. Intended Learning Outcomes: Knowledge Acquired & Practical Evidence
 
-The project provides concrete, auditable implementation evidence for all five Intended Learning Outcomes (ILOs) assessed under the Formative Assessment 2 framework:
-
-### ILO 1: Modular Python Applications
-* **Knowledge Acquired:** Mastered the structure of production-grade Python web architectures, separating clinical calculation engines, SVG generators, and vector graphics routines from presentation layouts.
-* **Practical Evidence:** Built a clean, single-file production architecture (`app.py`, 984 lines) with discrete, single-responsibility functions (`calculate_hydration_progress()`, `render_animated_bottle_svg()`, `render_avatar_svg()`, `draw_vector_art()`, `evaluate_badges()`).
-
-### ILO 2: Real-Time Data Processing
-* **Knowledge Acquired:** Deepened understanding of stateful reactive execution in Streamlit, managing dynamic updates to running totals, remaining volume deficits, percentage gauges, and chronological audit feeds.
-* **Practical Evidence:** All calculations execute in sub-millisecond local compute time within `st.session_state`: updating intake metrics, re-evaluating badge thresholds, and adjusting fluid fill heights instantaneously.
-
-### ILO 3: Interactive Streamlit Web Interface
-* **Knowledge Acquired:** Mastered Streamlit's rich widget ecosystem, custom CSS injection, dual-palette accessibility design, and session gating.
-* **Practical Evidence:** Implemented Screen 1 Onboarding Gateway, Sidebar Profile Card with circular avatar, dual-palette theme toggle (Obsidian Ocean Dark Mode default vs Crisp Aqua Light Mode), 5 tactile vessel chips, and numeric steppers.
-
-### ILO 4: Creative Visual Elements
-* **Knowledge Acquired:** Learned to integrate advanced graphics into web apps without external runtime dependencies—combining pure CSS keyframe SVG animations with procedural in-memory vector art.
-* **Practical Evidence:** Developed the 60 FPS animated SVG fluid water bottle with pure CSS `@keyframes wave-flow`, 5 mascot avatars with 5 emotional tiers (25 vector variations), and an in-memory Pillow `HeadlessTurtle` rendering Water Drops, Sprout Leaves, and 32-point Rosettes.
-
-### ILO 5: Public Cloud Deployment
-* **Knowledge Acquired:** Mastered cloud-native deployment pipelines, dependency pinning, and public repository management on GitHub and Streamlit Community Cloud.
-* **Practical Evidence:** Deployed to Streamlit Community Cloud with public HTTPS availability: [Live App URL](https://waterbuddy-parth-gajera.streamlit.app/). Verified minimal dependencies in `requirements.txt` with zero deprecated parameters.
+| Intended Learning Outcome | What I Learned | How I Applied It in WaterBuddy |
+| :--- | :--- | :--- |
+| **ILO 1: Modular Python Applications** | Breaking formatting, calculations, graphics, and UI state into small helper functions makes debugging and UI refreshes far faster. | Structured [app.py](app.py) into discrete helpers (`calculate_progress`, `render_coastal_spring_svg`, `render_animated_bottle_svg`, `HeadlessTurtle`, `draw_vector_art`, `evaluate_badges`, `log_drink`, `open_custom_drink_dialog`). |
+| **ILO 2: Real-Time Data Processing** | Storing structured intake dictionaries inside `st.session_state` keeps totals, Altair charts, badge thresholds, and undo actions synchronized automatically. | Built an instant `intake_history` list storing `id`, `time`, `vessel`, `amount`, and cumulative `running_total` so KPI cards, Altair bars, and the ledger update together. |
+| **ILO 3: Interactive Streamlit Web Interface** | A calm, cohesive color token table, modal dialogs, and `.streamlit/config.toml` prevent harsh contrast clashes across light mode, dark mode, and mobile screens. | Configured Coastal Oasis Light default + Deep Tide Dark toggle, top-bar `+ Log Drink` `@st.dialog` modal, equal-height 3-panel Hero Studio, and `@media (max-width: 920px)` phone stacking. |
+| **ILO 4: Creative Visual Elements** | Base64-encoded SVG art and Pillow trigonometric turtle geometry eliminate OS display dependencies and render crisply across Windows, macOS, and cloud Linux. | Created a panoramic coastal waterfall welcome scene with hiker man and sea turtle, bespoke SVG vessel and badge icons, and a 4-piece `HeadlessTurtle` art vault. |
+| **ILO 5: Public Cloud Deployment** | Pinning minimal libraries in `requirements.txt` and shipping `.streamlit/config.toml` keeps cloud builds fast and theme-accurate on first visit. | Deployed `app.py`, `requirements.txt`, and `.streamlit/config.toml` publicly on [Streamlit Community Cloud](https://waterbuddy-parth-gajera.streamlit.app/). |
 
 ---
 
-## 3. Problem Understanding & Clinical Hydration Baselines (WHO / EFSA / NAM)
+## 3. Problem Understanding & Clinical Hydration Baselines (WHO / EFSA)
 
-WaterBuddy moves beyond generic "8 glasses a day" simplifications by operationalizing internationally validated nutritional guidelines established by the **World Health Organization (WHO)**, the **European Food Safety Authority (EFSA)**, and the **National Academy of Medicine (NAM)**.
+Generic reminders tell a 9-year-old child, an office adult, and a senior over 65 to drink the exact same 2,000 ml target. From observing friends, students, and older family members, we noticed two practical gaps: busy people forget how much their own bottle holds (`350 ml` tumbler vs. `750 ml` flask), and older adults often ignore mild thirst until fatigue or headaches start. WaterBuddy maps age cohorts from World Health Organization (WHO) and European Food Safety Authority (EFSA) guidance directly onto everyday container sizes.
 
 ```mermaid
 flowchart TD
-    DemographicAssessment["Demographic Profiling Engine"] --> Cohort1["Early Childhood (1-8 yrs)<br>Target: 1,200 ml / 4.8 cups<br>Focus: High metabolic turnover & renal development"]
-    DemographicAssessment --> Cohort2["Adolescents & Teens (9-18 yrs)<br>Target: 1,800 ml / 7.2 cups<br>Focus: Musculoskeletal growth & physical activity"]
-    DemographicAssessment --> Cohort3["Adults Prime (19-64 yrs)<br>Target: 2,000 ml / 8.0 cups<br>Focus: Cognitive processing & fatigue mitigation"]
-    DemographicAssessment --> Cohort4["Seniors Silver (65+ yrs)<br>Target: 1,800 ml / 7.2 cups<br>Focus: Prophylactic intake against hypodipsia"]
+    CohortSelect["Age Cohort Calibration"] --> C1["Children (6-12 years)<br>Target: 1,600 ml / 6.4 cups"]
+    CohortSelect --> C2["Teens (13-18 years)<br>Target: 2,000 ml / 8.0 cups"]
+    CohortSelect --> C3["Adults (19-50 years)<br>Target: 2,500 ml / 10.0 cups"]
+    CohortSelect --> C4["Seniors (65+ years)<br>Target: 1,800 ml / 7.2 cups"]
 ```
 
-### 3.1 Clinical Demographic Matrix
+### 3.1 Age Cohort Reference Matrix
 
-| Demographic Cohort | Age Band | Baseline Volume | Baseline Cups (250ml) | Clinical & Physiological Rationale |
-| :--- | :---: | :---: | :---: | :--- |
-| **Early Childhood** | 1–8 years | **1,200 ml** | 4.8 cups | Rapid metabolic turnover, higher body water percentage (~70%), and developing renal concentrating capacity necessitate regular small-volume fluid replacement. |
-| **Adolescents & Teens** | 9–18 years | **1,800 ml** | 7.2 cups | Heightened musculoskeletal growth, increased physical school activity, and endocrine surges require augmented plasma volume maintenance. |
-| **Adults (Prime)** | 19–64 years | **2,000 ml** | 8.0 cups | Optimal cognitive processing, metabolic waste clearance, thermoregulation, and mitigation of screen-bound occupational fatigue. |
-| **Seniors (Silver)** | 65+ years | **1,800 ml** | 7.2 cups | **Age-related hypodipsia** blunts natural osmoreceptor thirst sensation; scheduled prophylactic hydration prevents acute kidney injury, cognitive delirium, and electrolyte imbalances. |
+| Age Cohort | Baseline Goal | Equivalent Cups (250 ml) | Practical Hydration Context |
+| :--- | :---: | :---: | :--- |
+| **Children (6 to 12 years)** | **1,600 ml** | 6.4 cups | Active kids lose fluids quickly during play and school sports, needing smaller frequent refills. |
+| **Teens (13 to 18 years)** | **2,000 ml** | 8.0 cups | Growth spurts and afternoon classes call for steady water intake to avoid late-day fatigue. |
+| **Adults (19 to 50 years)** | **2,500 ml** | 10.0 cups | Counters dry air-conditioned offices and long screen hours where even mild dehydration causes brain fog. |
+| **Seniors (65+ years)** | **1,800 ml** | 7.2 cups | Natural thirst signals soften with age, so steady routine sipping protects energy and kidney comfort. |
 
 ---
 
-## 4. System Architecture & Core Algorithmic State Machine
+## 4. System Architecture & Core Logic Flow
 
-### 4.1 A Simple Algorithm We Have Designed
-To govern daily hydration tracking, visual feedback, and gamified rewards, WaterBuddy implements a deterministic state machine:
+Whenever a user clicks a vessel button, submits the `+ Log Drink` modal, or uses the Cup Converter, one shared `log_drink()` pipeline updates totals, redraws the fluid chamber, shifts companion mood, updates Altair chart data, and unlocks badges and vector artwork.
 
-```
-[User Interaction: Tactile Vessel Chip OR Custom Stepper OR Cup Converter]
-        │
-        ▼
-[Volume Validation: 10 ml ≤ Amount ≤ 2,000 ml]
-        │
-        ▼
-[State Mutation: Append to st.session_state.history & Increment total_consumed]
-        │
-        ├──> [Calculate Progress: P = (total_consumed / daily_goal) × 100]
-        ├──> [Calculate Deficit: R = max(0, daily_goal - total_consumed)]
-        ├──> [Compute Fluid Fill Height: H_fill = (min(100, P) / 100) × 220 px]
-        ├──> [Evaluate Mascot State: Asleep (0-24%), Awakening, Smiling, Joyful, Triumphant (100%+)]
-        ├──> [Evaluate Living Wall of Badges: Check Milestones -> Update Badges]
-        └──> [Check Vector Reward: If 25% -> Water Drop; 50% -> Leaf; 100% -> Rosette]
+```mermaid
+flowchart LR
+    Input["Tap Vessel / + Log Drink Modal / Cup Converter"] --> Validate["Validate 10 ml to 2,500 ml"]
+    Validate --> State["Update total_intake & Append intake_history"]
+    State --> Calc["Compute Progress % & Remaining Deficit"]
+    Calc --> Visuals["Resize Bottle Water Fill & Update Companion Mood"]
+    Calc --> Rewards["Check 5 Badges & Unlock 4 Pillow Vector Artworks"]
+    State --> Analytics["Refresh Altair Trajectory Bar Chart & Progress Table"]
 ```
 
-### 4.2 Mathematical Foundations
+### 4.1 Simple Formulas & Real-World Examples
 
-$$\text{Hydration Progress Percentage } (P): \quad P = \left(\frac{C}{G}\right) \times 100$$
+Every formula runs directly in Python inside `calculate_progress()` and `render_animated_bottle_svg()` with transparent numbers:
 
-$$\text{Remaining Volume Deficit } (R): \quad R = \max\left(0, \; G - C\right)$$
+1. **Daily Progress Percentage:**  
+   `Progress % = (Logged ml / Daily Goal ml) x 100`  
+   *Example:* Logging `1,100 ml` out of a `2,500 ml` adult goal equals `(1100 / 2500) x 100 = 44.0%`.
 
-$$\text{Cup-to-Milliliter Equivalence}: \quad \text{Volume}_{\text{ml}} = \text{Volume}_{\text{cups}} \times 250$$
+2. **Remaining Water Needed:**  
+   `Remaining ml = max(0, Daily Goal ml - Logged ml)`  
+   *Example:* At `1,100 ml` logged toward `2,500 ml`, you have `1,400 ml` remaining (about `5.6` standard 250 ml cups).
 
-$$\text{Milliliter-to-Cup Equivalence}: \quad \text{Volume}_{\text{cups}} = \frac{\text{Volume}_{\text{ml}}}{250}$$
+3. **Cup-to-Milliliter Conversion:**  
+   `Added ml = Cups x 250`  
+   *Example:* Sliding the Cup Converter to `1.5` cups converts immediately to `375 ml`.
 
-$$\text{SVG Liquid Fill Height } (H_{\text{fill}}): \quad H_{\text{fill}} = \left(\frac{\min(100.0, \; P)}{100.0}\right) \times 220\text{ px}$$
+4. **SVG Fluid Fill Height:**  
+   `Fill Height (px) = (min(100, Progress %) / 100) x 195` and `Water Top Y = 248 - Fill Height`  
+   *Example:* At `44%`, water rises `85.8 px` inside the `195 px` glass chamber (`Y = 162.2`), keeping percentage text legible at every height.
 
-$$\text{SVG Water Surface Y-Coordinate } (Y_{\text{water}}): \quad Y_{\text{water}} = 270 - H_{\text{fill}}$$
-
-### 4.3 Session State Schema (`st.session_state`)
+### 4.2 Session State Schema (`st.session_state`)
 
 ```python
 st.session_state = {
-    "onboarded": bool,            # Gating flag separating Screen 1 from Screens 2-5
-    "user_name": str,             # User's chosen display name
-    "cohort": str,                # Selected clinical cohort from COHORTS dictionary
-    "companion": str,             # Selected companion character key
-    "goal": int,                  # Daily target volume in milliliters (default: 2000)
-    "total_consumed": int,        # Running total of consumed fluid in milliliters
-    "history": list[dict],        # Chronological ledger [{"time": str, "vessel": str, "amount": int, "running": int}]
-    "theme_mode": str,            # Active visual palette ("dark" or "light")
-    "converter_used": bool,       # Milestone trigger for Precision Hydrator badge
-    "confirm_reset": bool,        # Two-step confirmation modal flag
+    "onboarded": bool,           # Separates Welcome Landscape from the Main Dashboard
+    "dark_theme": bool,          # False = Coastal Oasis Light (default), True = Deep Tide Dark
+    "nav_view": str,             # "Dashboard" | "Wall of Badges" | "Vessel Studio"
+    "user_name": str,            # Personalized greeting and sidebar header name
+    "user_avatar": str,          # Selected companion key from COMPANIONS
+    "age_cohort": str,           # Selected age bracket from AGE_GOALS
+    "daily_goal": int,           # Personalized daily volume target in ml
+    "total_intake": int,         # Running cumulative water total for today
+    "intake_history": list,      # [{"id", "time", "vessel", "amount", "running_total"}]
+    "recent_art": str | None,    # Latest earned HeadlessTurtle key ("drop"|"traveler"|"leaf"|"badge")
+    "mascot_mood": str,          # "start"|"attentive"|"happy"|"energized"|"ecstatic"
+    "show_reset_confirm": bool,  # Two-step daily reset guard flag
 }
 ```
 
@@ -180,175 +161,160 @@ st.session_state = {
 
 ## 5. Interface Architecture & Live Screenshot Gallery
 
-The operational workflow transitions through 5 interconnected states designed in our Canva Visual Atlas (`DAHars3Lfk4`):
+WaterBuddy follows our 5-screen Canva Visual Atlas (`DAHars3Lfk4`) across an onboarding gateway and three live sidebar-switchable views:
 
 ```mermaid
 flowchart TD
-    A["Screen 1: Welcome & Onboarding Gateway<br>(Name, Demographic Cohort & Mascot Selection)"] -->|Initialize Session| B["Screen 2: Central Hydration Command Hub<br>(60 FPS Animated Bottle & Mascot Dialogue Hero)"]
-    B --> C["Screen 3: Tactile Intake Logger & Converter<br>(5 Vessel Chips + Custom Stepper + Cup Converter)"]
-    B --> D["Screen 4: Procedural Vector Art Rewards<br>(In-Memory Headless Turtle Water Drops & Rosettes)"]
-    B --> E["Screen 5: Chronological Ledger & Habit Wall<br>(Living Wall of Badges, Undo Drink & RFC 4180 CSV Export)"]
-    C -->|Update State & Telemetry| B
-    D -->|Milestone Render| B
-    E -->|Undo / Reset / Export| B
+    S1["Welcome Gateway<br>(Panoramic Coastal Waterfall SVG + Cohort Config)"] -->|Enter Dashboard| S2["Dashboard Studio<br>(+ Log Drink Modal CTA, 3-Card Hero, KPIs & Rapid Vessels)"]
+    S2 --> S3["Precision Converter & Analytics<br>(Altair Trajectory Bar Chart, Ledger & CSV Export)"]
+    S2 --> S4["Wall of Badges<br>(5 Habit Badges + 4-Piece HeadlessTurtle Vault)"]
+    S2 --> S5["Vessel & Calibration Studio<br>(5 Custom SVG Containers + WHO/EFSA Age Guide)"]
 ```
 
-### 5.1 Live Screenshot Gallery
-
-#### Screen 1: Welcome & Onboarding Gateway
-The standalone first-run onboarding screen captures user identity, binds clinical cohort targets dynamically, and previews the companion mascot spirit:
+### 5.1 Welcome & Onboarding Landscape (`onboarding_v2.png`)
+The opening screen pairs a custom base64-encoded coastal waterfall SVG scene (featuring alpine ridges, animated cascading falls, coastal coral lighthouse, reeds, a hydrated hiker holding a teal bottle, and HydroBuddy the Sea Turtle) with cohort calibration and live companion preview.
 
 <div align="center">
-<img src="assets/screenshots/onboarding.png" alt="Screen 1: Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
-<p><em>Figure 1: Standalone Welcome & Onboarding Gateway showing demographic cohort selector, mascot spirit selection, and feature preview in high-contrast dark mode.</em></p>
+<img src="assets/screenshots/onboarding_v2.png" alt="Screen 1: Coastal Spring Welcome & Onboarding Gateway" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 1: Coastal Oasis Light welcome screen with animated waterfall horizon art, hiker & turtle companions, cohort calibration, and Calm Hydration Suite summary.</em></p>
 </div>
 
-#### Screen 2: Central Hydration Command Hub & Live Dashboard
-The operational workspace features the **Dual Visual Feedback Engine** (60 FPS Animated SVG Water Bottle + Interactive Mascot Avatar), KPI metrics, tactile vessel chips, and the bi-directional cup converter:
+### 5.2 Main Dashboard Studio Light Mode (`dashboard_v2.png`)
+The top action bar keeps the primary `+ Log Drink` button in first view alongside quick tab pills (`Dashboard`, `Badges`, `Vessels`), above an equal-height 3-panel Hero Studio (`Fluid Chamber`, `Companion Coach`, `Hydro Art Vault`), four KPI cards, and one-tap bespoke SVG vessel chips.
 
 <div align="center">
-<img src="assets/screenshots/dashboard.png" alt="Screen 2: Central Hydration Command Hub" width="850" style="border-radius: 12px; border: 1.5px solid #0284c7; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
-<p><em>Figure 2: Central Hydration Command Hub showcasing real-time animated fluid wave level, responsive mascot speech bubble, tactile container chips, and chronological ledger.</em></p>
+<img src="assets/screenshots/dashboard_v2.png" alt="Screen 2: Dashboard Studio in Coastal Oasis Light Mode" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 2: Coastal Oasis Light Dashboard showing the equal-height 3-panel Hero Studio, first-view + Log Drink CTA, 4 KPI metrics, and custom SVG vessel logging chips.</em></p>
+</div>
+
+### 5.3 Deep Tide Dark Mode at 105% Goal (`dashboard_dark_v1.png`)
+Toggling Deep Tide Dark Mode adapts every card surface, divider ornament, Altair chart axis, modal dialog, and vessel icon cleanly to low-glare coastal slate (`#101B21`), while showing HydroBuddy's celebratory gold sunglasses and the unlocked Ocean Championship Rosette.
+
+<div align="center">
+<img src="assets/screenshots/dashboard_dark_v1.png" alt="Screen 3: Deep Tide Dark Mode at 105% Goal" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"/>
+<p><em>Figure 3: Deep Tide Dark Mode showcasing adaptive surface contrast, ecstatic companion sunglasses state, and Ocean Championship Rosette reward.</em></p>
+</div>
+
+### 5.4 Wall of Badges & Hydro Art Collector Vault (`badges_v2.png`)
+Unlocked milestones illuminate in deep coastal teal (`#1A7887`) with crisp white custom vector icons alongside the 4-piece Pillow `HeadlessTurtle` Collector Vault (`Crystal Droplet`, `Spring Hiker & Turtle`, `Hydration Sprout`, and `Ocean Rosette`).
+
+<div align="center">
+<img src="assets/screenshots/badges_v2.png" alt="Screen 4: Wall of Badges & Hydro Art Vault" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 4: Living Wall of Badges at 5 of 5 Complete plus all 4 unlocked procedural artworks rendered in-memory by HeadlessTurtle + Pillow.</em></p>
+</div>
+
+### 5.5 Vessel & Hydration Calibration Studio (`vessel_studio_v1.png`)
+Reference studio comparing all five container silhouettes (`Coffee Mug`, `Water Glass`, `Travel Tumbler`, `Sports Bottle`, `Hydro Flask`) directly beside age-calibrated fluid targets.
+
+<div align="center">
+<img src="assets/screenshots/vessel_studio_v1.png" alt="Screen 5: Vessel & Hydration Calibration Studio" width="850" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 5: Vessel & Hydration Calibration Studio displaying standardized container volumes alongside WHO / EFSA cohort baselines.</em></p>
 </div>
 
 ---
 
-## 6. Dual Visual Feedback & 60 FPS Animated SVG Water Bottle Engine
+## 6. Animated Fluid Chamber & Companion Coach Engine
 
-WaterBuddy replaces static progress bars with a synchronized **Dual Visual Feedback Engine**:
+In place of flat horizontal progress bars, WaterBuddy pairs two synced hero modules inside an equal-height CSS grid (`studio-grid`):
 
 ```mermaid
 flowchart LR
-    subgraph Engine ["Dual Visual Engine"]
-        A["60 FPS SVG Animated Bottle<br>• Dynamic Fluid Height<br>• Sine-Wave Surface Kinematics<br>• Staggered Air Micro-Bubbles<br>• High-Contrast Numerics"]
-        B["Interactive Mascot Avatar<br>• 5 Expressive Vector Tiers<br>• Live Motivational Dialogue<br>• Milestone Celebrations"]
-    end
-
-    StateUpdate["User Logs Drink"] --> Engine
+    Log["User Logs Water"] --> Chamber["Fluid Chamber SVG<br>- Dynamic Height Clip Path<br>- Continuous Sine Wave Loop<br>- High-Contrast Dark Pill Readout"]
+    Log --> Coach["Companion Coach Card<br>- Live Mascot Expression Tier<br>- Contextual Dialogue Bubble<br>- Next Badge Progress Bar"]
 ```
 
-### 6.1 Technical Architecture of the SVG Bottle Engine
-1. **Glass Contour Definition**: Ergonomic bottle geometry rendered via SVG `<path>` vectors with dual-stop linear gradients (`#38bdf8` to `#0284c7`) simulating optical refraction.
-2. **Clipped Fluid Chamber**: An internal SVG `<clipPath id="wb-clip">` enforces liquid boundaries, preventing graphical bleed beyond the glass wall perimeter.
-3. **Continuous Wave Flow**: Driven by a pure CSS `@keyframes wave-flow` transformation:
-   ```css
-   @keyframes wave-flow {
-       0% { transform: translateX(0px); }
-       50% { transform: translateX(-35px); }
-       100% { transform: translateX(0px); }
-   }
-   ```
-4. **Rising Micro-Bubbles**: Dynamic `<circle>` elements animated via `@keyframes bubble-rise` featuring staggered cycle delays ($2.4\text{s}$ and $3.0\text{s}$) to evoke biological water vitality.
-5. **High-Contrast Numerical Centerpiece**: Bold typography rendering current percentage and volume readout with subtle drop-shadow filters ensuring effortless legibility against any fill height.
+1. **Clipped Water Boundary:** `<clipPath id="wb2-clip">` confines all wave geometry inside the ergonomic glass contour.
+2. **Smooth Sine-Wave Flow:** CSS `@keyframes wb-wave` gently shifts the wave surface across 4-second loops without JavaScript timers.
+3. **Always-Legible Center Badge:** A high-contrast pill inside the chamber (`44%`, `1,100 / 2,500 ml`) stays readable whether empty, half full, or above 100%.
 
 ---
 
-## 7. 5-Avatar Companion Spirit Mascot System (25 Vector Variations)
+## 7. Five Companion Spirit Mascots & Reactive States
 
-Hydration consistency relies on emotional connection. WaterBuddy features **5 Companion Spirits**, each designed with distinct personality traits, motivational philosophies, and 5 responsive emotional states.
+Every user selects a companion spirit on onboarding that moves through five expressive moods as hydration progresses during the day:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Asleep: 0% - 24% (Initial Thirsty State)
-    Asleep --> Awakening: 25% - 49% (Rhythm Building)
-    Awakening --> Smiling: 50% - 74% (Halfway Milestone)
-    Smiling --> Joyful: 75% - 99% (Home Stretch)
-    Joyful --> Triumphant: 100%+ (Crowned Victory Celebration)
-    Triumphant --> Asleep: Daily Reset
+    [*] --> start: 0% to 24% (Gentle Invitation)
+    start --> attentive: 25% to 49% (Momentum Building)
+    attentive --> happy: 50% to 74% (Halfway Cleared)
+    happy --> energized: 75% to 99% (Final Glass Stretch)
+    energized --> ecstatic: 100%+ (Gold Sunglasses Victory)
+    ecstatic --> start: New Day Reset
 ```
 
-### 7.1 Companion Roster & Emotional Tiers
-
-| Companion Mascot | Avatar Spirit & Persona | Core Motivational Philosophy |
+| Companion Name | Character Design | Hydration Encouragement Focus |
 | :--- | :--- | :--- |
-| **HydroBuddy 🐢** | Sea Turtle Navigator | *"Slow, steady sips carve canyons into daily endurance."* |
-| **Bubbles 🐬** | Energetic Playful Dolphin | *"Ride the hydration wave! Energy follows fluid velocity!"* |
-| **Splash 🦦** | River Otter Explorer | *"Keep your stream moving—never let your vitality dry up!"* |
-| **Misty 💧** | Gentle Raindrop Elemental | *"Every single droplet recharges a billion biological engines."* |
-| **Pippin 🐧** | Crisp Polar Penguin | *"Stay crisp, stay cool, and conquer your goals one glass at a time!"* |
+| **HydroBuddy the Sea Turtle** | Layered coastal teal shell explorer | Wise ocean navigator focused on calm, steady sipping rhythm |
+| **Bubbles the Playful Dolphin** | Streamlined agile sea swimmer | High-energy celebrator for rapid multi-drink streaks |
+| **Splash the River Otter** | Warm brown river otter holding crystal drop | Consistent mover encouraging regular hourly refills |
+| **Misty the Friendly Raindrop** | Minimalist droplet elemental with highlight | Gentle reminder of steady focus and temperature balance |
+| **Pippin the Polar Penguin** | Crisp black-and-white Antarctic penguin | Refreshing fan of chilled water bottles and recovery |
 
 ---
 
-## 8. Procedural In-Memory Headless Turtle Vector Graphics Engine
+## 8. Cloud-Safe Headless Turtle Vector Art Vault (Pillow)
 
-### 8.1 The Headless Server Constraint & Innovation
-The assignment specification references turtle graphics rewards. However, standard Python `import turtle` relies intrinsically on `tkinter`, which invokes the underlying OS X11 or Win32 display subsystem. On headless containerized servers—such as **Streamlit Community Cloud**, Linux Docker containers, or cloud VMs—executing standard `turtle` results in fatal runtime crashes:
-```
+Because Python's standard `turtle` library opens a native desktop `tkinter` window, importing it on Linux cloud hosting immediately throws:
+```text
 _tkinter.TclError: no display name and no $DISPLAY environment variable
 ```
+Our custom `HeadlessTurtle` class mirrors `forward`, `left`, `right`, `penup`, `pendown`, `goto`, and `arc` trigonometry directly onto an in-memory `280x280` `PIL.Image` RGBA canvas, generating four downloadable coastal emblems:
 
-To deliver 100% cloud-safe turtle graphics without sacrificing vector mathematical purity, WaterBuddy implements an **In-Memory Headless Turtle Vector Engine** (`HeadlessTurtle`) utilizing Pillow (`PIL.ImageDraw`).
-
-```mermaid
-flowchart LR
-    A["Turtle State (x, y, θ, pen)"] --> B["Trigonometric Step<br>x' = x + d cos(θ)<br>y' = y - d sin(θ)"]
-    B --> C["Pillow ImageDraw Buffer<br>(In-Memory RGBA)"]
-    C --> D["Procedural Output<br>(Water Drop • Sprout Leaf • 32-pt Rosette)"]
-```
-
-### 8.2 Procedural Artworks
-1. **Water Drop 💧**: Sinusoidal teardrop spline with specular gradient highlight arc, rendered at 25% daily progress.
-2. **Sprout Leaf 🌿**: Symmetrical sine-blade leaf perimeter with central stem and bi-lateral secondary veins, rendered at 50% daily progress.
-3. **32-Point Gold Scalloped Rosette Medallion 🏆**: Multi-layer achievement rosette featuring twin swallowtail ribbon folds, a 64-vertex starburst outer perimeter ($r_1=58\text{px}, r_2=50\text{px}$), concentric rings, 12 orbital studs, and a central gold star, rendered at 100% goal completion.
+| Artwork Key | Artwork Title | Unlock Requirement | Procedural Geometry |
+| :--- | :--- | :--- | :--- |
+| `drop` | **Crystal Water Droplet** | Log your 1st drink | Smooth multi-point teardrop outline with coastal teal refraction arc |
+| `traveler` | **Spring Hiker & Turtle** | Log any 2+ drinks today | Minimalist lakeside walker carrying an insulated bottle with turtle companion |
+| `leaf` | **Hydration Sprout** | Reach 50% of daily goal | Symmetrical botanical sprout leaf with central stem and angled side veins |
+| `badge` | **Ocean Championship Rosette** | Reach 100% of daily goal | 64-vertex scalloped sunburst medal with twin swallowtail ribbons and star core |
 
 ---
 
-## 9. Living Wall of Badges & Habit Gamification
-
-Behavioral psychology demonstrates that progressive milestone revelation fosters long-term adherence. WaterBuddy incorporates a **Living Wall of Badges** that dynamically monitors session telemetry and illuminates achievements in real time.
+## 9. Living Wall of Badges & Habit Milestones
 
 ```mermaid
 flowchart TD
-    LedgerState["Session State Ledger"] --> B1{"Drinks Logged ≥ 1?"}
-    B1 -- Yes --> U1["🌱 First Sip<br>✨ UNLOCKED (Radiant Emerald)"]
-    B1 -- No --> L1["🔒 First Sip (Grayscale B&W)"]
-
-    LedgerState --> B2{"Intake ≥ 50% Goal?"}
-    B2 -- Yes --> U2["⚡ Halfway Hero<br>✨ UNLOCKED (Electric Aqua)"]
-    B2 -- No --> L2["🔒 Halfway Hero (Grayscale B&W)"]
-
-    LedgerState --> B3{"Intake ≥ 100% Goal?"}
-    B3 -- Yes --> U3["🏆 Goal Crusher<br>✨ UNLOCKED (Golden Amber)"]
-    B3 -- No --> L3["🔒 Goal Crusher (Grayscale B&W)"]
-
-    LedgerState --> B4{"Unique Vessels ≥ 3?"}
-    B4 -- Yes --> U4["🌈 Variety Master<br>✨ UNLOCKED (Prismatic Border)"]
-    B4 -- No --> L4["🔒 Variety Master (Grayscale B&W)"]
-
-    LedgerState --> B5{"Converter Used == True?"}
-    B5 -- Yes --> U5["🎯 Precision Hydrator<br>✨ UNLOCKED (Crimson/Cyan)"]
-    B5 -- No --> L5["🔒 Precision Hydrator (Grayscale B&W)"]
+    History["Session Intake History"] --> B1{"Logged drinks >= 1?"}
+    B1 -- Yes --> U1["First Sip (Unlocked Teal)"]
+    History --> B2{"Logged drinks >= 3?"}
+    B2 -- Yes --> U2["Steady Pacer (Unlocked Teal)"]
+    History --> B3{"Total >= 50% Goal?"}
+    B3 -- Yes --> U3["Halfway Hydrated (Unlocked Teal)"]
+    History --> B4{"Total >= 100% Goal?"}
+    B4 -- Yes --> U4["Hydro Champion (Unlocked Teal)"]
+    History --> B5{"Goal != Cohort Baseline?"}
+    B5 -- Yes --> U5["Calibration Master (Unlocked Teal)"]
 ```
 
----
-
-## 10. Tactile Logging, Bi-Directional Cup Converter & History Ledger
-
-### 10.1 Ergonomic Vessel Chips & Custom Stepper
-WaterBuddy provides tactile logging mechanisms tailored for quick one-click interaction:
-- **5 Physical Container Chips**: Accurately mapped to common hydration vessels (Mug 250ml, Glass 250ml, Tumbler 350ml, Sports Bottle 500ml, Hydro Flask 750ml).
-- **Precision Numeric Stepper**: Enables logging arbitrary milliliter volumes from 10 ml up to 2,000 ml with bounded validation.
-- **Interactive Unit Converter**: Converts between imperial cups and metric milliliters in both directions, featuring a direct `+ Add Converted Amount to Tracker` action that records the entry with full container attribution.
-
-### 10.2 History Ledger & Session Controls
-- **Chronological Audit Table**: Displays all logged drinks with precise timestamps, container icons, fluid volume, and running daily totals.
-- **Non-Destructive Rollback (`Undo Last Drink`)**: Enables immediate reversal of accidental logs, automatically recalculating running totals, badge statuses, and mascot emotional states.
-- **Export Data Sovereignty (`Download CSV Ledger`)**: Encodes the session history into an RFC 4180 compliant CSV stream for personal archiving or integration with Apple Health / Google Fit.
-- **Guarded Session Reset**: Implements a guarded two-step confirmation workflow to protect users against accidental data loss.
+Every badge evaluates live against `intake_history`, illuminates in coastal teal (`#1A7887`) with crisp white SVG vector icons (`render_badge_svg`) once earned, and gracefully returns to muted gray lock tiles when resetting the day.
 
 ---
 
-## 11. Verification & Scenario Stress-Testing Matrix
+## 10. Rapid Vessel Logging, Cup Converter & Hydration Ledger
 
-Evaluators can input the following 5 real-world hydration scenarios to verify all threshold boundaries and visual transitions:
+1. **One-Tap Rapid Vessels:** Five uniform cards with custom coastal teal SVG container silhouettes (`Coffee Mug 250 ml`, `Water Glass 250 ml`, `Travel Tumbler 350 ml`, `Sports Bottle 500 ml`, `Hydro Flask 750 ml`).
+2. **First-View `+ Log Drink` Modal:** Clicking `+ Log Drink` in the top navigation bar opens `@st.dialog("Log Custom Water Intake")` to record any custom volume (`10` to `2,500 ml`) and custom beverage label immediately.
+3. **Aligned Precision Steppers & Cup Converter:** Twin bordered cards pair a custom milliliter form (`10` to `2,500 ml`) right next to a live Cup Converter (`0.5` to `15.0` cups multiplied cleanly by `250 ml`).
+4. **Altair Trajectory Bar Chart & Progress Ledger:** Visualizes cumulative daily growth alongside a clean table featuring inline progress bars, one-click `Undo Last Drink`, `Export Intake CSV`, and guarded daily reset confirmation.
 
-| # | Scenario Description | Target Cohort | Logged Actions | Resulting Intake | Mascot State | Badge Unlocked | Vector Reward Rendered |
-| :-: | :--- | :--- | :--- | :-: | :--- | :--- | :--- |
-| **1** | Morning Awakening Sip | Adults (2,000 ml) | 1x Standard Glass (250 ml) | **250 ml (12.5%)** | Awakening 🌱 | 🌱 First Sip | None |
-| **2** | Desk-Bound Focus Block | Adults (2,000 ml) | 1x Travel Tumbler (350 ml) | **600 ml (30.0%)** | Awakening 🌱 | 🌱 First Sip | Water Drop 💧 |
-| **3** | Lunchtime Rehydration | Adults (2,000 ml) | 2x Standard Glass (500 ml) | **1,100 ml (55.0%)** | Smiling ⚡ | ⚡ Halfway Hero | Sprout Leaf 🌿 |
-| **4** | Workout Session | Adults (2,000 ml) | 1x Gym Bottle (500 ml) | **1,600 ml (80.0%)** | Joyful 🌊 | 🌈 Variety Master | Sprout Leaf 🌿 |
-| **5** | Evening Target Victory | Adults (2,000 ml) | 1x Sports Bottle (500 ml) | **2,100 ml (105.0%)** | Triumphant 🏆 | 🏆 Goal Crusher | Gold Rosette Medallion 🏆 |
+---
+
+## 11. Verification & Multi-Scenario Test Proof
+
+We verified end-to-end state changes (`AppTest` automated assertions covering onboarding, all 5 vessels, custom form, cup converter, undo rollback, Deep Tide Dark toggle, modal opening, badge counts, and vessel studio) alongside headless Chrome desktop (`1420px`) and mobile (`412px`) inspections.
+
+| Test Case | Setup / Action | Logged Total | Progress & Rank | Badges Unlocked | Hydro Art Unlocked |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| **1. Initial Coastal Onboarding** | Adults (`2,500 ml` target), HydroBuddy selected | `0 ml` | `0.0%` (`Seedling Sipper`) | `0 of 5` | Spring Seed Preview |
+| **2. Midday Studio Sequence** | `250` Mug + `350` Tumbler + `500` Bottle (`?demo=true`) | `1,100 ml` | `44.0%` (`Flowing Stream`) | `2 of 5` (`First Sip`, `Steady Pacer`) | `Crystal Water Droplet` + `Hiker` |
+| **3. Cup Converter & Custom Step** | Log Custom `150 ml` + Convert `1.5` cups (`+375 ml`), then Undo | `2,250 ml` | `102.3%` (`Ocean Master`) | `5 of 5` (calibrated `2,200 ml` goal) | All 4 Artworks Unlocked |
+| **4. 105% Goal Victory Sequence** | `5` drinks (`?demo=full` on custom `2,000 ml` goal) | `2,100 ml` | `105.0%` (`Ocean Master`) | `5 of 5 (100% Complete)` | `Ocean Championship Rosette` |
+| **5. Mobile & Dark Modal Check** | Toggle Deep Tide Dark + open `+ Log Drink` + `412x915` viewport | Live parity | Clean readable contrast | Responsive stacked layout | Crisp SVG icons across views |
+
+<div align="center">
+<img src="assets/screenshots/test_proof_collage_v2.png" alt="Multi-Scenario Verification Test Proof Collage" width="900" style="border-radius: 12px; border: 1.5px solid #1A7887; box-shadow: 0 8px 24px rgba(15,41,51,0.12);"/>
+<p><em>Figure 6: Side-by-side live verification capturing Test 1 (Coastal Oasis Studio & Hero Cards), Test 2 (Cup Converter, Altair Trajectory Chart & Progress Ledger), and Test 3 (5/5 Badges & 4-Piece Hydro Art Vault).</em></p>
+</div>
 
 ---
 
@@ -356,56 +322,46 @@ Evaluators can input the following 5 real-world hydration scenarios to verify al
 
 ### 12.1 Running Locally
 ```bash
-# 1. Clone the project repository
+# 1. Clone the repository
 git clone https://github.com/parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA.git
 cd IDAI102-1000544-PARTH-PARVINBHAI-GAJERA
 
-# 2. Establish a Python virtual environment
+# 2. Create and activate a virtual environment
 python -m venv venv
-# On Windows (PowerShell):
-.\venv\Scripts\Activate.ps1
-# On macOS / Linux:
-source venv/bin/activate
+.\venv\Scripts\Activate.ps1    # Windows PowerShell
+# source venv/bin/activate     # macOS / Linux
 
-# 3. Install pinned production dependencies
-pip install --upgrade pip
+# 3. Install dependencies and launch
 pip install -r requirements.txt
-
-# 4. Launch the application
 streamlit run app.py
 ```
-*The application opens automatically at `http://localhost:8501`.*
 
-### 12.2 Deploying to Streamlit Community Cloud
-1. Push `app.py`, `requirements.txt`, and `README.md` to GitHub.
-2. Connect your GitHub account to [share.streamlit.io](https://share.streamlit.io/).
-3. Select repository `parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA`, branch `main`, and main file path `app.py`.
-4. Click **"Deploy!"**. The app will be publicly live via HTTPS with high availability.
+### 12.2 Deployed Files for Streamlit Community Cloud
+1. Ensure [app.py](app.py), [requirements.txt](requirements.txt), [.streamlit/config.toml](.streamlit/config.toml), and [README.md](README.md) are pushed to `main`.
+2. Connect repository `parthibcpana/IDAI102-1000544-PARTH-PARVINBHAI-GAJERA` on [share.streamlit.io](https://share.streamlit.io/) with main file path `app.py`.
 
 ---
 
-## 13. System Standards & Architecture Specifications
+## 13. System Standards & Technical Alignment
 
-| Requirement Domain | Technical Architecture Standard | Implementation in WaterBuddy | Verification Evidence |
-| :--- | :--- | :--- | :--- |
-| **1. Clinical Demographic Engine** | 4 validated demographic cohorts with dynamic volume targets (1,200ml to 2,000ml) based on WHO/EFSA guidelines. | Complete cohort selector on Screen 1 and sidebar; updates goal dynamically across all computations. | Clean state binding in `st.session_state.cohort` updating all percentage gauges. |
-| **2. Dual Visual Feedback System** | 60 FPS animated SVG water bottle paired with 5-character companion mascot expressing 5 emotional tiers. | Continuous pure CSS fluid sine-wave undulations, rising micro-bubbles, and reactive mascot visual states. | Validated SVG generation across 0%, 25%, 50%, 75%, 100%, and 150% intake bounds. |
-| **3. Procedural Vector Engine** | Cloud-safe, in-memory `HeadlessTurtle` engine built on Pillow (`PIL.ImageDraw`), fully replacing fragile Tkinter dependencies. | Procedurally generates Water Drops, Sprout Leaves, and 32-point Scalloped Gold Medallions with zero cloud crashes. | Pure mathematical trigonometric rendering generating 240x240 RGBA canvases in memory. |
-| **4. Tactile Logging & Unit Conversion** | 5 container chips (250ml–750ml), custom ml numeric stepper, and bi-directional Cup Converter with direct 1-click logging. | Seamless one-click additions with real-time progress updates; converter adds exact calculated fluid amounts. | Tested sub-millisecond execution with immediate ledger append and visual state updates. |
-| **5. Gamification & Living Badges** | Living Wall of Badges featuring 5 behavioral milestones dynamically transitioning from monochrome to radiant color. | Badges evaluate live against session telemetry; unlocks trigger celebratory visual feedback. | Badges revert cleanly to grayscale on daily reset and illuminate dynamically on criteria satisfaction. |
-| **6. Data Sovereignty & History** | Chronological audit ledger, instant "Undo Last Drink" action, RFC 4180 CSV export, and guarded 2-step reset modal. | Full session-state persistence in volatile memory; zero remote telemetry; private and secure. | Data persists cleanly across navigation switches and exports standard tabular CSV files. |
-| **7. Dual-Palette Accessibility** | Obsidian Ocean Dark Mode (default) and Crisp Aqua Light Mode with WCAG 2.1 AA compliant contrast ratios. | Zero invisible text; comprehensive CSS styling applied to all cards, inputs, and tables. | High-contrast visual parity across dark and light palettes verified on all viewports. |
-| **8. Code Hygiene & Standards** | Zero deprecated parameters (`width="stretch"` used everywhere; `use_container_width` eliminated); modular architecture. | Clean, PEP 8 compliant, single-file deployment (`app.py`), thoroughly unit-tested and verified. | Zero syntax errors, zero deprecated Streamlit warnings, passing automated unit tests. |
+| Requirement Area | Implementation Standard in WaterBuddy | Verification Outcome |
+| :--- | :--- | :--- |
+| **Age Cohort Calibration** | 4 WHO/EFSA cohorts (`1,600` to `2,500 ml/day`) plus live custom target override | Dynamically recalculates KPIs, fill %, and `Calibration Master` badge |
+| **Dual Visual Feedback** | Animated clipped SVG Fluid Chamber + 5 Companion mascots across 5 emotional states | Verified SVG state transitions at `0%`, `44%`, and `105%` fills |
+| **Headless Turtle Engine** | In-memory Pillow `HeadlessTurtle` rendering 4 `280x280` RGBA emblems | Zero Tkinter crashes in headless environments; PNG downloads verified |
+| **Low-Friction Logging** | Top `+ Log Drink` modal, 5 SVG rapid vessels, custom stepper, and Cup Converter | Verified sub-second updates across `AppTest` and live Chrome captures |
+| **Data Transparency & Undo** | Altair progression bar chart, `ProgressColumn` ledger, `Undo Last Drink`, and CSV export | Non-destructive undo restores totals, mascot mood, and active artwork |
+| **Dual Theme & Mobile Layout** | Native Coastal Oasis Light (`.streamlit/config.toml`) + Deep Tide Dark + `<=920px` CSS | Verified high legibility on desktop (`1420px`) and mobile (`412px`) |
 
 ---
 
 ## 14. Academic Integrity Statement
 
-This submission—comprising the production codebase (`app.py`), the dependency manifest (`requirements.txt`), and this architectural documentation (`README.md`)—represents the collaborative software engineering work of **Parth Pravinbhai Gajera** (Candidate ID: `1000544`) and project partner **Subhan Syed** for the **IDAI 102: Python Programming** course at **Aspee Nutan Academy / WACP International** in partnership with **WellNest Technologies Pvt. Ltd.**.
+This submission comprises our complete Streamlit codebase ([app.py](app.py)), Streamlit theme config ([.streamlit/config.toml](.streamlit/config.toml)), dependency manifest ([requirements.txt](requirements.txt)), and documentation ([README.md](README.md)) built by **Parth Pravinbhai Gajera** (Candidate ID: `1000544`) and project partner **Subhan Syed** for **IDAI 102: Python Programming** at **Aspee Nutan Academy / WACP International** under the **WellNest Technologies Pvt. Ltd.** brief.
 
-Following collaborative guidelines, foundational text-based starter routines were contributed by Subhan Syed, while the comprehensive visual system architecture, onboarding gateway, 60 FPS animated SVG fluid water bottle, 5-avatar companion spirits, tactile container chips, cup converter, living wall of badges, in-memory headless turtle vector graphics, dual-palette theme engine, and cloud deployment were designed, engineered, and executed by Parth Pravinbhai Gajera in direct alignment with the FA-1 visual atlas blueprint (`DAHars3Lfk4`).
+Foundational text-based starter routines were contributed by Subhan Syed, while the full Streamlit visual architecture, coastal waterfall welcome scene, animated SVG fluid chamber, five-avatar companion coach, custom container silhouettes, `+ Log Drink` modal workflow, cup converter, living wall of badges, in-memory Pillow `HeadlessTurtle` art vault, Altair progression chart, light/dark dual palette system, and cloud deployment were engineered by Parth Pravinbhai Gajera in alignment with our FA-1 Canva visual atlas (`DAHars3Lfk4`).
 
 **Student Developer:** Parth Pravinbhai Gajera (Candidate ID: `1000544`)  
 **Project Partner:** Subhan Syed  
-**School / Institutional Partner:** Aspee Nutan Academy / WACP International  
-**Status:** Complete & Production Ready  
+**Institution:** Aspee Nutan Academy / WACP International  
+**Status:** Complete & Verified
