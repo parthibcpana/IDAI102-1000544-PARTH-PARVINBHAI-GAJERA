@@ -75,10 +75,13 @@ VESSELS = [
     {"id": "flask", "name": "Hydro Flask", "amount": 750, "desc": "All-day brushed steel vacuum flask"},
 ]
 
-def render_vessel_svg(v_id: str, size: int = 56) -> str:
+def render_vessel_svg(v_id: str, size: int = 56, dark: bool = False) -> str:
     uri = load_asset_b64(f"vessels/{v_id}_3d.png")
     if uri:
-        return f'<img src="{uri}" class="asset-3d" alt="{html.escape(v_id)}" style="width:{size}px; height:{size}px; object-fit:contain; display:inline-block; filter:drop-shadow(0 6px 10px rgba(15,41,51,0.14));"/>'
+        img_tag = f'<img src="{uri}" class="asset-3d" alt="{html.escape(v_id)}" style="width:{size}px; height:{size}px; object-fit:contain; display:block; filter:drop-shadow(0 5px 8px rgba(15,41,51,0.14));"/>'
+        if dark:
+            return f'<span style="display:inline-flex; align-items:center; justify-content:center; width:{size + 10}px; height:{size + 10}px; border-radius:14px; background:rgba(232,244,247,0.92); padding:4px; flex-shrink:0;">{img_tag}</span>'
+        return f'<span style="display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">{img_tag}</span>'
     shapes = {
         "mug": '<path d="M5 7h11v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7zm11 2h2.5a2.5 2.5 0 0 1 0 5H16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
         "glass": '<path d="M6.5 4h11l-1.4 16H7.9L6.5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
@@ -1311,20 +1314,20 @@ render_html(f"""
   }}
   [data-testid="stMetric"] {{
     background: var(--surface) !important; border: 1px solid var(--border) !important;
-    border-radius: 20px !important; padding: 1.05rem 1.15rem !important; box-shadow: var(--shadow) !important;
+    border-radius: 20px !important; padding: 0.9rem 0.95rem !important; box-shadow: var(--shadow) !important;
   }}
-  [data-testid="stMetricValue"] * {{ color: var(--ink) !important; }}
-  [data-testid="stMetricLabel"] * {{ color: var(--muted) !important; font-weight: 700 !important; font-size: 0.84rem !important; }}
+  [data-testid="stMetricValue"] * {{ color: var(--ink) !important; font-size: clamp(1.3rem, 1.8vw, 1.8rem) !important; }}
+  [data-testid="stMetricLabel"] * {{ color: var(--muted) !important; font-weight: 700 !important; font-size: 0.76rem !important; }}
   [data-testid="stMetricDelta"] {{
     background: var(--accent-soft) !important; border-radius: 99px !important;
-    padding: 0.14rem 0.58rem !important; width: fit-content !important;
+    padding: 0.12rem 0.48rem !important; width: fit-content !important; font-size: 0.72rem !important;
   }}
   [data-testid="stMetricDelta"] div, [data-testid="stMetricDelta"] span, [data-testid="stMetricDelta"] svg {{
     color: var(--accent) !important;
   }}
   .vessel-chip {{
     background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
-    padding: 0.75rem 0.45rem; text-align: center; height: 132px; margin-bottom: 0.45rem;
+    padding: 0.8rem 0.4rem; text-align: center; height: 156px; margin-bottom: 0.5rem;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     box-shadow: var(--shadow); transition: transform 0.22s ease, border-color 0.22s ease;
   }}
@@ -1365,6 +1368,28 @@ render_html(f"""
   }}
   .sec-title {{ margin: 0.12rem 0 0 0 !important; font-size: 1.4rem !important; font-weight: 800 !important; letter-spacing: -0.35px; color: var(--ink) !important; }}
   .sec-sub {{ margin: 0.18rem 0 0 0 !important; font-size: 0.86rem; color: var(--muted) !important; }}
+
+  .wb-ledger-wrap {{
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    overflow-x: auto; box-shadow: var(--shadow); margin-bottom: 0.75rem;
+  }}
+  .wb-ledger {{ width: 100%; border-collapse: collapse; font-size: 0.84rem; }}
+  .wb-ledger th {{
+    background: var(--soft); color: var(--muted) !important; text-align: left;
+    padding: 0.65rem 0.85rem; font-size: 0.74rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.04em; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }}
+  .wb-ledger td {{
+    padding: 0.58rem 0.85rem; border-bottom: 1px solid var(--border); color: var(--ink) !important;
+    vertical-align: middle; white-space: nowrap;
+  }}
+  .wb-ledger tr:last-child td {{ border-bottom: none; }}
+  .wb-ledger tr:hover td {{ background: rgba(78, 165, 180, 0.08); }}
+  .wb-pbar {{ width: 92px; height: 7px; background: var(--soft); border-radius: 99px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 7px; }}
+  .wb-pfill {{ display: block; height: 100%; background: var(--accent); border-radius: 99px; }}
+  .st-key-top_log_drink_btn button, .st-key-nav_dash button, .st-key-nav_badges button, .st-key-nav_vessels button {{
+    padding: 0.42rem 0.65rem !important; font-size: 0.84rem !important; white-space: nowrap !important;
+  }}
 
   @media (max-width: 920px) {{
     .studio-grid {{ grid-template-columns: 1fr !important; }}
@@ -1520,19 +1545,19 @@ else:
                 st.rerun()
 
     # CLEAN TOP ACTION BAR WITH FIRST-VIEW "+ Log Drink" BUTTON
-    h1, h2 = st.columns([1.45, 1.75])
+    h1, h2 = st.columns([1.18, 2.02])
     with h1:
         render_html(f"""
         <div class="nav-head">
           <div>
             <span style="font-size:1.45rem; font-weight:900; letter-spacing:-0.4px; color:{T['ink']};">WaterBuddy</span>
-            <span style="font-size:0.86rem; color:{T['muted']}; margin-left:0.6rem;"><strong>{html.escape(st.session_state.user_name)}</strong> • {total:,} / {goal:,} ml</span>
+            <span style="font-size:0.86rem; color:{T['muted']}; margin-left:0.6rem; white-space:nowrap;"><strong>{html.escape(st.session_state.user_name)}</strong> • {total:,} / {goal:,} ml</span>
           </div>
           <span class="rank-pill">{user_rank}</span>
         </div>
         """)
     with h2:
-        b_log, b1, b2, b3 = st.columns([1.1, 0.9, 1.0, 1.0])
+        b_log, b1, b2, b3 = st.columns([1.15, 1.05, 1.1, 0.9])
         if b_log.button("+ Log Drink", type="primary", width="stretch", key="top_log_drink_btn"):
             open_custom_drink_dialog(goal)
         if b1.button("● Dashboard" if st.session_state.nav_view == "Dashboard" else "Dashboard", type="secondary", width="stretch", key="nav_dash", on_click=_switch_view, args=("Dashboard",)):
@@ -1624,8 +1649,8 @@ else:
         """)
 
         if st.session_state.recent_art:
-            _, dlc = st.columns([2.2, 1.0])
-            dlc.download_button("Download Earned Artwork (.png)", image_to_png_bytes(art_img), f"waterbuddy_{active_art}.png", "image/png", width="stretch")
+            _, dlc = st.columns([1.85, 1.15])
+            dlc.download_button("Download Artwork (.png)", image_to_png_bytes(art_img), f"waterbuddy_{active_art}.png", "image/png", width="stretch")
 
         # 4 KPI METRICS
         delta_std = goal - std_baseline
@@ -1640,7 +1665,7 @@ else:
         v_cols = st.columns(len(VESSELS))
         for idx, v in enumerate(VESSELS):
             with v_cols[idx]:
-                render_html(f"<div class='vessel-chip'><div>{render_vessel_svg(v['id'], 58)}</div><div style='font-weight:700; font-size:0.83rem; margin-top:0.2rem;'>{v['name']}</div><div style='font-size:0.78rem; color:{T['accent']}; font-weight:800;'>+{v['amount']} ml</div></div>")
+                render_html(f"<div class='vessel-chip'><div>{render_vessel_svg(v['id'], 48, dark=is_dark)}</div><div style='font-weight:700; font-size:0.81rem; line-height:1.2; margin-top:0.3rem;'>{v['name']}</div><div style='font-size:0.76rem; color:{T['accent']}; font-weight:800; margin-top:0.12rem;'>+{v['amount']} ml</div></div>")
                 if st.button(f"+{v['amount']} ml", key=f"vessel_btn_{idx}", width="stretch"):
                     if log_drink(v["amount"], v["name"], goal): st.balloons()
                     st.rerun()
@@ -1698,7 +1723,7 @@ else:
                     avg_sip_val = round(float(df_h["Amount (ml)"].mean()), 1)
                     mean_df = pd.DataFrame({"MeanSip": [avg_sip_val], "Label": [f"Avg {avg_sip_val:.0f} ml"]})
                     base_tl = alt.Chart(df_h).encode(
-                        x=alt.X("Timestamp:T", title="Clock Time", axis=alt.Axis(format="%I:%M %p", labelAngle=-15)),
+                        x=alt.X("Timestamp:T", title="Clock Time", axis=alt.Axis(format="%I:%M %p", tickCount=min(6, max(2, len(df_h))), labelAngle=-15)),
                         y=alt.Y("Amount (ml):Q", title="Drink Volume (ml)", scale=alt.Scale(zero=True)),
                         tooltip=[
                             alt.Tooltip("#:O", title="Sip #"),
@@ -1795,7 +1820,7 @@ else:
                     if HAS_ALTAIR:
                         goal_df = pd.DataFrame({"GoalTarget": [int(goal)], "GoalLabel": [f"Daily Goal ({goal:,} ml)"]})
                         cum_base = alt.Chart(df_h).encode(
-                            x=alt.X("Timestamp:T", title="Clock Time", axis=alt.Axis(format="%I:%M %p", labelAngle=-15)),
+                            x=alt.X("Timestamp:T", title="Clock Time", axis=alt.Axis(format="%I:%M %p", tickCount=min(6, max(2, len(df_h))), labelAngle=-15)),
                             y=alt.Y(
                                 "Running Total (ml):Q",
                                 title="Cumulative Volume (ml)",
@@ -1817,7 +1842,7 @@ else:
                         )
                         cum_chart = (
                             (cum_area + cum_line + cum_pts + goal_rule)
-                            .properties(height=215)
+                            .properties(height=225, padding={"top": 16, "left": 6, "right": 8, "bottom": 4})
                             .configure(background="transparent")
                             .configure_view(strokeWidth=0)
                             .configure_axis(labelColor=T["ink"], titleColor=T["muted"], gridColor=T["border"])
@@ -1828,19 +1853,38 @@ else:
 
             st.markdown("**Chronological Hydration Dataset**")
             disp_cols = ["#", "Time", "Vessel / Source", "Sip Interval", "Period", "Amount (ml)", "Running Total (ml)"]
-            st.dataframe(
-                df_h[disp_cols],
-                width="stretch",
-                hide_index=True,
-                column_config={
-                    "Running Total (ml)": st.column_config.ProgressColumn(
-                        "Running Total (ml)",
-                        format="%d ml",
-                        min_value=0,
-                        max_value=max(goal, int(df_h["Running Total (ml)"].max())),
+            if is_dark:
+                max_run = max(goal, int(df_h["Running Total (ml)"].max()))
+                rows_html = []
+                for _, r in df_h[disp_cols].iterrows():
+                    pct_w = min(100, int(round((int(r["Running Total (ml)"]) / max(1, max_run)) * 100)))
+                    rows_html.append(
+                        f"<tr><td>{int(r['#'])}</td><td>{html.escape(str(r['Time']))}</td>"
+                        f"<td><strong>{html.escape(str(r['Vessel / Source']))}</strong></td>"
+                        f"<td style='color:{T['muted']};'>{html.escape(str(r['Sip Interval']))}</td>"
+                        f"<td><span style='background:{T['accent_soft']}; color:{T['accent']}; padding:2px 8px; border-radius:99px; font-size:0.75rem; font-weight:700;'>{html.escape(str(r['Period']))}</span></td>"
+                        f"<td>+{int(r['Amount (ml)']):,} ml</td>"
+                        f"<td><span class='wb-pbar'><span class='wb-pfill' style='width:{pct_w}%;'></span></span><strong>{int(r['Running Total (ml)']):,} ml</strong></td></tr>"
                     )
-                },
-            )
+                render_html(
+                    "<div class='wb-ledger-wrap'><table class='wb-ledger'>"
+                    "<thead><tr><th>#</th><th>Time</th><th>Vessel / Source</th><th>Sip Interval</th><th>Period</th><th>Amount (ml)</th><th>Running Total (ml)</th></tr></thead>"
+                    f"<tbody>{''.join(rows_html)}</tbody></table></div>"
+                )
+            else:
+                st.dataframe(
+                    df_h[disp_cols],
+                    width="stretch",
+                    hide_index=True,
+                    column_config={
+                        "Running Total (ml)": st.column_config.ProgressColumn(
+                            "Running Total (ml)",
+                            format="%d ml",
+                            min_value=0,
+                            max_value=max(goal, int(df_h["Running Total (ml)"].max())),
+                        )
+                    },
+                )
             u1, u2 = st.columns(2)
             if u1.button("Undo Last Drink", width="stretch"):
                 removed = st.session_state.intake_history.pop()
@@ -1898,7 +1942,7 @@ else:
                 <div style="font-size:1.22rem; font-weight:800; color:{T['ink']}; margin-bottom:0.25rem;">Interactive Vessels &amp; Age Personas</div>
                 <div style="font-size:0.86rem; color:{T['muted']}; line-height:1.5;">Tap any 3D container below to log water directly from this studio, or switch your active clinical age target on the right.</div>
               </div>
-              <div style="flex:1 1 420px; text-align:center;">
+              <div style="flex:1 1 420px; text-align:center; {'background:rgba(235,246,249,0.94); border-radius:18px; padding:0.75rem 1rem;' if is_dark else ''}">
                 <img src="{banner_uri}" alt="3D Hydration Vessels Lineup" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto; filter:drop-shadow(0 8px 16px rgba(15,41,51,0.12));"/>
               </div>
             </div>
@@ -1908,9 +1952,9 @@ else:
         with vc1:
             render_section_header("Capacities", "Beverage Vessel Ratios", "Real-world 3D containers with instant one-tap logging.")
             for v in VESSELS:
-                r1, r2 = st.columns([2.25, 0.85], vertical_alignment="center")
+                r1, r2 = st.columns([1.85, 1.15], vertical_alignment="center")
                 with r1:
-                    render_html(f"<div class='interactive-card'>{render_vessel_svg(v['id'], 56)}<div style='flex:1;'><div style='display:flex; justify-content:space-between; align-items:baseline;'><strong>{v['name']}</strong><span style='font-weight:800; color:{T['accent']};'>{v['amount']} ml</span></div><div style='font-size:0.8rem; color:{T['muted']}; margin-top:0.15rem;'>{v['desc']} (~{v['amount'] / 250:.1f} cups)</div></div></div>")
+                    render_html(f"<div class='interactive-card'>{render_vessel_svg(v['id'], 54, dark=is_dark)}<div style='flex:1;'><div style='display:flex; justify-content:space-between; align-items:baseline; gap:8px;'><strong>{v['name']}</strong><span style='font-weight:800; color:{T['accent']}; white-space:nowrap;'>{v['amount']} ml</span></div><div style='font-size:0.8rem; color:{T['muted']}; margin-top:0.15rem;'>{v['desc']} (~{v['amount'] / 250:.1f} cups)</div></div></div>")
                 with r2:
                     if st.button(f"+{v['amount']} ml", key=f"studio_log_{v['id']}", width="stretch"):
                         if log_drink(v["amount"], v["name"], goal): st.balloons()
@@ -1921,11 +1965,11 @@ else:
                 c_img_uri = load_asset_b64(ci["img"])
                 avatar_block = f"<img src='{c_img_uri}' class='asset-3d' alt='{ci['tier']}' style='width:64px; height:64px; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 6px 10px rgba(15,41,51,0.16));'/>" if c_img_uri else ""
                 is_cur = (st.session_state.age_cohort == cn and goal == ci["goal"])
-                b1, b2 = st.columns([2.25, 0.85], vertical_alignment="center")
+                b1, b2 = st.columns([2.05, 0.95], vertical_alignment="center")
                 with b1:
-                    render_html(f"<div class='interactive-card' style='border-color:{T['accent'] if is_cur else T['border']};'>{avatar_block}<div style='flex:1;'><div style='display:flex; justify-content:space-between;'><strong>{ci['tier']} ({cn})</strong><span style='color:{T['accent']}; font-weight:800;'>{ci['goal']:,} ml</span></div><p style='font-size:0.8rem; color:{T['muted']}; margin:0.2rem 0 0 0; line-height:1.38;'>{ci['fact']}</p></div></div>")
+                    render_html(f"<div class='interactive-card' style='border-color:{T['accent'] if is_cur else T['border']};'>{avatar_block}<div style='flex:1;'><div style='display:flex; justify-content:space-between; gap:8px;'><strong>{ci['tier']} • {cn.split(' (')[0]}</strong><span style='color:{T['accent']}; font-weight:800; white-space:nowrap;'>{ci['goal']:,} ml</span></div><p style='font-size:0.8rem; color:{T['muted']}; margin:0.2rem 0 0 0; line-height:1.38;'>{ci['fact']}</p></div></div>")
                 with b2:
-                    if st.button("Active" if is_cur else f"Set {ci['goal']:,}", key=f"studio_cohort_{idx_c}", type="primary" if is_cur else "secondary", disabled=is_cur, width="stretch"):
+                    if st.button("Active" if is_cur else "Apply", key=f"studio_cohort_{idx_c}", type="primary" if is_cur else "secondary", disabled=is_cur, width="stretch"):
                         st.session_state.age_cohort = cn
                         st.session_state.daily_goal = ci["goal"]
                         st.session_state.last_action = "goal_change"
