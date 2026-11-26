@@ -117,6 +117,7 @@ HYDRATION_TIPS = [
 # UNIQUE COASTAL SPRING WATERFALL SVG HERO (Welcome Screen Artwork + Man & Turtle)
 # ------------------------------------------------------------------------------
 
+@st.cache_data(show_spinner=False)
 def render_coastal_spring_svg(dark=False):
     """Coastal waterfall, alpine lagoon, lighthouse, reeds & hiker man with turtle companion."""
     sky_top = "#132229" if dark else "#FBFDF9"
@@ -1035,13 +1036,13 @@ def log_drink(amount_ml: int, source_label: str, goal_ml: int, time_lbl: str = N
     npct = (st.session_state.total_intake / max(1, goal_ml)) * 100.0
     if notify:
         if st.session_state.total_intake > 4500 or npct >= 150.0:
-            st.toast(f"Logged +{amt} ml ({source_label}) — Caution: Over-hydration zone ({npct:.0f}%).")
+            st.session_state.pending_toast = (f"Logged +{amt} ml ({source_label}) — Caution: Over-hydration zone ({npct:.0f}%).", "⚠️")
         elif npct >= 125.0:
-            st.toast(f"Logged +{amt} ml ({source_label}) — Ahead of goal ({npct:.0f}%), ease pace gently.")
+            st.session_state.pending_toast = (f"Logged +{amt} ml ({source_label}) — Ahead of goal ({npct:.0f}%), ease pace gently.", "💧")
         elif npct >= 100.0:
-            st.toast(f"Goal Achieved! +{amt} ml ({source_label}) pushed you to {npct:.0f}%!")
+            st.session_state.pending_toast = (f"Goal Achieved! +{amt} ml ({source_label}) pushed you to {npct:.0f}%!", "🎉")
         else:
-            st.toast(f"Logged +{amt} ml ({source_label}) • {npct:.0f}% of goal")
+            st.session_state.pending_toast = (f"Logged +{amt} ml ({source_label}) • {npct:.0f}% of goal", "💧")
     if npct >= 100:
         st.session_state.recent_art = "badge"
         return True
@@ -1068,6 +1069,7 @@ if "mascot_mood" not in st.session_state: st.session_state.mascot_mood = "start"
 if "last_action" not in st.session_state: st.session_state.last_action = "init"
 if "last_drink_desc" not in st.session_state: st.session_state.last_drink_desc = ""
 if "show_reset_confirm" not in st.session_state: st.session_state.show_reset_confirm = False
+if "pending_toast" not in st.session_state: st.session_state.pending_toast = None
 if "nav_view" not in st.session_state:
     qv = st.query_params.get("view")
     st.session_state.nav_view = "Wall of Badges" if qv == "badges" else ("Vessel Studio" if qv == "studio" else "Dashboard")
@@ -1103,6 +1105,9 @@ T = {
     "shadow": "0 8px 28px rgba(0, 0, 0, 0.25)" if is_dark else "0 8px 28px rgba(15, 41, 51, 0.055)",
     "gold_bg": "rgba(214, 152, 56, 0.16)" if is_dark else "#FAF2D8",
     "gold_ink": "#F2CA6B" if is_dark else "#8A5E14",
+    "alert_info_bg": "#19313A" if is_dark else "#E5F4F6",
+    "alert_warn_bg": "#2E2615" if is_dark else "#FDF4E1",
+    "alert_err_bg": "#361C20" if is_dark else "#FBECEB",
 }
 
 render_html(f"""
@@ -1145,10 +1150,74 @@ render_html(f"""
   [data-testid="stModal"] button[aria-label="Close"] svg {{
     color: {T['ink']} !important; fill: currentColor !important;
   }}
-  div[data-baseweb="popover"] > div, ul[role="listbox"], ul[role="listbox"] li {{
-    background: var(--surface) !important; color: var(--ink) !important; border-color: var(--border) !important;
+  div[data-baseweb="popover"],
+  div[data-baseweb="popover"] > div,
+  div[data-baseweb="popover"] > div > div,
+  [data-testid="stVirtualDropdown"],
+  [data-testid="stVirtualDropdown"] > div,
+  [data-testid="stSelectboxVirtualDropdown"],
+  [data-testid="stSelectboxVirtualDropdown"] > div,
+  [data-testid="stSelectboxVirtualDropdown"] [role="listbox"],
+  div[data-baseweb="menu"],
+  ul[data-baseweb="menu"],
+  [role="listbox"],
+  [role="listbox"] > div,
+  [role="option"] {{
+    background: {T['surface']} !important; background-color: {T['surface']} !important;
+    color: {T['ink']} !important; border-color: {T['border']} !important;
   }}
-  ul[role="listbox"] li:hover, ul[role="listbox"] li[aria-selected="true"] {{ background: var(--accent-soft) !important; }}
+  [data-testid="stSelectboxVirtualDropdown"] {{
+    border: 1px solid {T['border']} !important; border-radius: 12px !important; box-shadow: {T['shadow']} !important;
+  }}
+  div[data-baseweb="popover"] *, [data-testid="stSelectboxVirtualDropdown"] *,
+  [role="listbox"] *, [role="option"] *, div[data-baseweb="menu"] * {{
+    color: {T['ink']} !important;
+  }}
+  [role="option"]:hover, [role="option"][aria-selected="true"],
+  [role="option"][data-focused="true"], [role="option"][data-selected="true"],
+  [role="option"]:hover *, [role="option"][aria-selected="true"] *,
+  [role="option"][data-focused="true"] *, [role="option"][data-selected="true"] * {{
+    background: {T['accent_soft']} !important; background-color: {T['accent_soft']} !important; color: {T['ink']} !important;
+  }}
+
+  /* Theme-Safe Alerts (Info, Warning, Over-Hydration Guardrail & Reset) */
+  [data-testid="stAlert"], [data-testid="stAlertContainer"], div[role="alert"], .stAlert {{
+    background: {T['alert_info_bg']} !important; background-color: {T['alert_info_bg']} !important;
+    color: var(--ink) !important; border: 1px solid var(--border) !important;
+    border-left: 4px solid var(--accent) !important; border-radius: 14px !important;
+  }}
+  [data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]),
+  [data-testid="stAlertContainer"]:has([data-testid="stAlertContentWarning"]) {{
+    background: {T['alert_warn_bg']} !important; background-color: {T['alert_warn_bg']} !important;
+    border-left-color: #D69838 !important;
+  }}
+  [data-testid="stAlert"]:has([data-testid="stAlertContentError"]),
+  [data-testid="stAlertContainer"]:has([data-testid="stAlertContentError"]) {{
+    background: {T['alert_err_bg']} !important; background-color: {T['alert_err_bg']} !important;
+    border-left-color: #C45B4D !important;
+  }}
+  [data-testid="stAlert"] *, [data-testid="stAlertContainer"] *, div[role="alert"] *, .stAlert * {{
+    color: var(--ink) !important;
+  }}
+  [data-testid="stAlert"] svg, div[role="alert"] svg {{
+    fill: var(--accent) !important; color: var(--accent) !important;
+  }}
+  [data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) svg {{
+    fill: #D69838 !important; color: #D69838 !important;
+  }}
+
+  /* High-Contrast Toast Pop-ups (Light & Dark Modes) */
+  [data-testid="stToastContainer"] {{ z-index: 999999 !important; }}
+  [data-testid="stToast"] {{
+    background: {T['surface']} !important; background-color: {T['surface']} !important;
+    color: {T['ink']} !important; border: 1.5px solid {T['accent']} !important;
+    border-radius: 16px !important; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28) !important;
+  }}
+  [data-testid="stToast"] > div, [data-testid="stToast"] [data-testid="stMarkdownContainer"],
+  [data-testid="stToast"] p, [data-testid="stToast"] span, [data-testid="stToast"] div {{
+    background: transparent !important; color: {T['ink']} !important; font-weight: 600 !important;
+  }}
+  [data-testid="stToast"] button svg {{ color: {T['muted']} !important; fill: {T['muted']} !important; }}
 
   [data-testid="stForm"], .st-key-cup_conv_card {{
     background: var(--surface) !important; border: 1px solid var(--border) !important;
@@ -1167,9 +1236,40 @@ render_html(f"""
   [data-testid="stBaseButton-secondary"] *, button[kind="secondary"] *,
   [data-testid="stDownloadButton"] button *, [data-testid="stFormSubmitButton"] button * {{ color: var(--ink) !important; }}
 
-  .stTextInput input, .stNumberInput input, .stSelectbox div[data-baseweb="select"] > div {{
-    background: var(--surface) !important; color: var(--ink) !important;
-    border: 1px solid var(--border) !important; border-radius: 12px !important;
+  [data-testid="stSelectbox"] .react-aria-ComboBox [role="group"],
+  [data-testid="stTextInputRootElement"],
+  [data-testid="stDateInputField"],
+  [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+  [data-testid="stDateInput"] [data-baseweb="input"],
+  [data-testid="stDateInput"] [data-baseweb="base-input"],
+  [data-testid="stTextInput"] [data-baseweb="input"],
+  [data-testid="stTextInput"] [data-baseweb="base-input"],
+  [data-testid="stNumberInput"] [data-baseweb="input"],
+  [data-testid="stNumberInput"] [data-baseweb="base-input"],
+  [data-baseweb="select"] > div,
+  [data-baseweb="input"],
+  [data-baseweb="base-input"] {{
+    background: {T['surface']} !important; background-color: {T['surface']} !important;
+    color: {T['ink']} !important; border: 1px solid {T['border']} !important; border-radius: 12px !important;
+  }}
+  [data-testid="stSelectbox"] .react-aria-ComboBox [role="group"] *,
+  [data-testid="stTextInputRootElement"] *,
+  [data-testid="stDateInputField"] *,
+  [data-testid="stNumberInputContainer"] *,
+  [data-testid="stNumberInputContainer"] input,
+  [data-baseweb="select"] > div *,
+  [data-baseweb="input"] input,
+  [data-baseweb="base-input"] input {{
+    background: transparent !important; background-color: transparent !important;
+    color: {T['ink']} !important; -webkit-text-fill-color: {T['ink']} !important; caret-color: {T['ink']} !important;
+  }}
+  [data-testid="stTextInputRootElement"] input::placeholder,
+  [data-testid="stSelectbox"] input::placeholder {{
+    color: {T['muted']} !important; -webkit-text-fill-color: {T['muted']} !important; opacity: 0.78 !important;
+  }}
+  [data-testid="stSelectbox"] svg, [data-testid="stDateInput"] svg,
+  [data-baseweb="select"] svg, .stDateInput svg {{
+    color: {T['ink']} !important; fill: {T['ink']} !important;
   }}
   [data-testid="stNumberInputContainer"], .stNumberInput div[data-baseweb="input"] {{
     background: var(--surface) !important; border: 1px solid var(--border) !important;
@@ -1287,6 +1387,11 @@ def open_custom_drink_dialog(goal_ml: int):
 # SCREEN 1: WELCOME & ONBOARDING (Alpine Spring Oasis Landscape)
 # ------------------------------------------------------------------------------
 
+if st.session_state.get("pending_toast"):
+    _t_msg, _t_ico = st.session_state.pending_toast
+    st.session_state.pending_toast = None
+    st.toast(_t_msg, icon=_t_ico)
+
 if not st.session_state.onboarded:
     render_html(render_coastal_spring_svg(dark=is_dark))
     st.markdown("<div style='height:0.65rem;'></div>", unsafe_allow_html=True)
@@ -1396,7 +1501,8 @@ else:
             st.rerun()
 
         st.markdown("---")
-        st.caption(f"*{random.choice(HYDRATION_TIPS)}*")
+        tip_idx = len(st.session_state.intake_history) % len(HYDRATION_TIPS)
+        st.caption(f"*{HYDRATION_TIPS[tip_idx]}*")
         if not st.session_state.show_reset_confirm:
             if st.button("Start a New Day (Reset)", width="stretch"):
                 st.session_state.show_reset_confirm = True
