@@ -1976,3 +1976,94 @@ else:
                         st.rerun()
 
 render_html(f"<div style='text-align:center; color:{T['muted']}; font-size:0.8rem; padding:1.4rem 0 0.6rem 0;'><strong>WaterBuddy Daily Hydration Companion</strong> • IDAI 102 • Candidate: <strong>Parth Pravinbhai Gajera</strong> (1000544) • WellNest Technologies Pvt. Ltd.</div>")
+
+# Dashboard-only motivational card with progress-aware, time-based quote rotation.
+MOTIVATIONAL_QUOTES = [
+    "First sip down. You’re off to a great start today.",
+    "A glass of water this morning is the easiest win you’ll get all day.",
+    "Before the day gets crazy, take a quick second for your first glass.",
+    "A little water now will thank you when that afternoon slump hits.",
+    "One glass down. Easy, simple, and already doing something good for yourself.",
+    "You’re a quarter of the way there. Nice and steady.",
+    "Brain feeling a little foggy? A quick glass of water usually helps.",
+    "Your body is quietly thanking you for every glass right now.",
+    "You’re almost halfway through today’s goal—keep doing what you’re doing.",
+    "No rush, just steady sips. You’re building a really solid habit.",
+    "Halfway there! Honestly, you’re making this look easy.",
+    "Before you reach for another coffee, try a glass of water first.",
+    "You’re over the halfway hump. Keep that good energy going.",
+    "It really does add up, one glass at a time.",
+    "Past the halfway mark—you’ve got plenty of time to finish strong.",
+    "75% done. The finish line is right around the corner.",
+    "Just a glass or two left and you’ve officially nailed today.",
+    "You’re so close—finish off that last bit before you wind down for the night.",
+    "Don't stop at 90% when you're this close to wrapping it up.",
+    "One last pour and you’re completely done for the day.",
+    "You did it! Your body is seriously feeling the love today.",
+    "110%—you didn't just hit your goal, you went right past it.",
+    "Three days in a row. Look at you showing up for yourself.",
+    "A whole week of hitting your water goal. That’s something to feel proud of.",
+    "100% done. One less thing to worry about today—great job.",
+    "Having one of those busy days? Totally fine—just grab a quick sip when you can.",
+    "Hey, it’s been a little while since your last glass. Take ten seconds for yourself.",
+    "Forget about yesterday. Today’s a fresh start, one glass at a time.",
+    "Even half a glass counts right now. Just do what you can.",
+    "Take a quick breather, stretch your shoulders, and grab a sip of water",
+]
+
+@st.fragment(run_every="30s")
+def render_motivational_quote():
+    sip_count_for_quote = len(st.session_state.intake_history)
+    quote_pct = (total / max(1, goal)) * 100
+    hour_now = datetime.now().hour
+
+    if quote_pct >= 110:
+        quote_choices = [21]
+    elif quote_pct >= 100:
+        quote_choices = [20, 24]
+    elif total <= 0:
+        quote_choices = [27, 25, 29]
+        if hour_now < 11:
+            quote_choices.extend([1, 2])
+    elif quote_pct < 25:
+        quote_choices = [0, 2, 3, 4, 25, 28, 29]
+        if hour_now < 11:
+            quote_choices.append(1)
+    elif quote_pct < 50:
+        quote_choices = list(range(5, 10)) + [25, 28, 29]
+    elif quote_pct < 75:
+        quote_choices = list(range(10, 15)) + [25, 28, 29]
+    else:
+        quote_choices = list(range(15, 20)) + [25, 28, 29]
+        if hour_now >= 19:
+            quote_choices.append(17)
+
+    if sip_count_for_quote and quote_pct < 100:
+        try:
+            last_sip_time = datetime.strptime(st.session_state.intake_history[-1].get("time", ""), "%I:%M %p")
+            now_for_quote = datetime.now()
+            last_sip_time = last_sip_time.replace(year=now_for_quote.year, month=now_for_quote.month, day=now_for_quote.day)
+            if (now_for_quote - last_sip_time).total_seconds() >= 7200:
+                quote_choices.append(26)
+        except Exception:
+            pass
+
+    # Streak claims stay available but are not shown without verifiable multi-day history.
+    rotation_slot = int(datetime.now().timestamp() // 30)
+    quote_index = quote_choices[rotation_slot % len(quote_choices)]
+    quote_text = html.escape(MOTIVATIONAL_QUOTES[quote_index])
+
+    render_html(f"""
+    <div style="margin-top:1.4rem; padding:1.1rem 1.35rem; border:1px solid {T['border']}; border-radius:20px; background:linear-gradient(115deg, {T['surface']} 0%, {T['soft']} 100%); box-shadow:{T['shadow']}; display:flex; align-items:center; gap:1rem;">
+      <div style="width:44px; height:44px; flex:0 0 44px; border-radius:15px; display:flex; align-items:center; justify-content:center; color:{T['accent']}; background:{T['accent_soft']};">
+        <svg width="22" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.5s7 7.1 7 12.2a7 7 0 1 1-14 0C5 9.6 12 2.5 12 2.5Z" fill="currentColor" opacity=".9"/><path d="M9 16.5c.4 1.1 1.3 1.8 2.6 2" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div style="min-width:0;">
+        <div style="font-size:.7rem; font-weight:800; letter-spacing:.09em; color:{T['accent']}; text-transform:uppercase; margin-bottom:.22rem;">A little encouragement</div>
+        <div style="font-size:.96rem; line-height:1.5; font-weight:650; color:{T['ink']};">{quote_text}</div>
+      </div>
+    </div>
+    """)
+
+if st.session_state.nav_view == "Dashboard":
+    render_motivational_quote()
