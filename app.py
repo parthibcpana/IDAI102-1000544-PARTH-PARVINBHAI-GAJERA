@@ -1,4 +1,4 @@
-import base64
+﻿import base64
 import html
 import io
 import math
@@ -2013,7 +2013,9 @@ MOTIVATIONAL_QUOTES = [
 
 @st.fragment(run_every="30s")
 def render_motivational_quote():
-    sip_count_for_quote = len(st.session_state.intake_history)
+    total = int(st.session_state.get("total_intake", 0))
+    goal = int(st.session_state.get("daily_goal", 2000))
+    sip_count_for_quote = len(st.session_state.get("intake_history", []))
     quote_pct = (total / max(1, goal)) * 100
     hour_now = datetime.now().hour
 
